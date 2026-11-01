@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="km" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO & Meta Tags -->
+    <title>Tano Garden - ចម្ការតាណូ</title>
+    <meta name="description" content="Tano Garden offers fresh plants and flowers directly from the farm with reasonable prices and fast delivery service in Cambodia.">
+    <meta property="og:title" content="Tano Garden - Bring Nature Into Your Home">
+    <meta property="og:description" content="100% natural plants and flowers, locally grown in Cambodia.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN is for development; build Tailwind before a serious launch) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        khmer: ['"Kantumruy Pro"', 'sans-serif'],
+                    },
+                    animation: {
+                        blob: "blob 7s infinite",
+                        fadeInUp: "fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
+                        wiggle: "wiggle 3s infinite ease-in-out",
+                        float: "float 15s infinite ease-in-out",
+                        shine: "shine 4s infinite",
+                        slideUp: "slideUp 0.5s ease-out forwards",
+                    },
+                    keyframes: {
+                        blob: {
+                            "0%": { transform: "translate(0px, 0px) scale(1)" },
+                            "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                            "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                            "100%": { transform: "translate(0px, 0px) scale(1)" }
+                        },
+                        fadeInUp: {
+                            "0%": { opacity: 0, transform: "translateY(40px) scale(0.95)" },
+                            "100%": { opacity: 1, transform: "translateY(0) scale(1)" }
+                        },
+                        wiggle: {
+                            "0%, 100%": { transform: "scale(1)" },
+                            "50%": { transform: "scale(1.05)" }
+                        },
+                        float: {
+                            "0%": { transform: "translateY(0) rotate(0deg)", opacity: 0.3 },
+                            "50%": { transform: "translateY(-20px) rotate(5deg)", opacity: 0.6 },
+                            "100%": { transform: "translateY(0) rotate(0deg)", opacity: 0.3 }
+                        },
+                        shine: {
+                            "0%": { left: "-100%" },
+                            "50%": { left: "100%" },
+                            "100%": { left: "100%" }
+                        },
+                        slideUp: {
+                            "from": { opacity: 0, transform: "translateY(20px)" },
+                            "to": { opacity: 1, transform: "translateY(0)" }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons (version pinned) -->
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+    <style>
+/* Custom Styles */
+body { font-family: 'Kantumruy Pro', sans-serif; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FAF9F6; }
+.dark ::-webkit-scrollbar-track { background: #1C2321; }
+::-webkit-scrollbar-thumb { background: #84A98C; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #52796F; }
+
+/* Keyframes used by custom classes (defined here so they always exist) */
+@keyframes shine { 0% { left: -100%; } 50% { left: 100%; } 100% { left: 100%; } }
+@keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* Liquid Glass Effect */
+.liquid-glass {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.liquid-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shine 4s infinite;
+}
+
+/* Marquee */
+.animate-marquee { display: inline-block; animation: marquee 40s linear infinite; white-space: nowrap; }
+
+/* Plant Vine Animation */
+.plant-vine-path { stroke-dasharray: 1000; transition: stroke-dashoffset 0.1s linear; }
+
+/* Water Droplet */
+.water-droplet { transition: transform 0.8s ease-out; opacity: 0; }
+.group:hover .water-droplet { opacity: 1; transform: translateY(15px); }
+
+/* Logo Hover */
+.logo-group:hover .logo-icon { transform: scale(1.15); }
+.logo-group:hover .logo-text { transform: scale(1.05); color: #52796F; }
+
+/* Parallax Blobs */
+.parallax-blob { transition: transform 0.1s ease-out; }
+
+/* Classes that were used in the HTML/JS but never defined */
+.animation-delay-2000 { animation-delay: 2s; }
+.glass-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.hover-blur-bg:hover .bg-image { filter: brightness(0.9); }
+
+/* Modal entrance animation (replaces the animate-in classes that needed a plugin) */
+#product-modal > div:last-child,
+#cart-modal > div:last-child,
+#payment-modal > div:last-child,
+#promo-modal > div:last-child,
+#profile-modal > div:last-child { animation: modalIn 0.35s ease-out; }
+
+/* Draggable Chat */
+#chat-widget-container { touch-action: none; }
+.grabbing { cursor: grabbing; }
+.grab { cursor: grab; }
+
+    </style>
+</head>
+<body class="bg-[#FAF9F6] text-[#4A4E4D] dark:bg-[#1C2321] dark:text-[#EAE8E2] transition-colors duration-700 pb-32 selection:bg-[#E07A5F] selection:text-white">
+
+    <!-- Floating Background Elements (Parallax) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-40">
+        <i data-lucide="leaf" class="absolute text-[#84A98C] animate-float parallax-blob" data-speed="0.05" style="top: 15%; left: 5%; width: 48px; height: 48px; animation-delay: 0s;"></i>
+        <i data-lucide="leaf" class="absolute text-[#52796F] animate-float parallax-blob" data-speed="0.08" style="top: 50%; right: 10%; width: 64px; height: 64px; animation-delay: 4s;"></i>
+        <i data-lucide="flower-2" class="absolute text-[#F4A261] animate-float parallax-blob" data-speed="0.03" style="bottom: 10%; left: 15%; width: 40px; height: 40px; animation-delay: 7s;"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-transparent py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="logo-group flex items-center gap-3 group cursor-pointer select-none transition-all duration-500" onclick="window.scrollTo(0,0)">
+                <div class="logo-icon w-12 h-12 bg-[#52796F] dark:bg-[#84A98C] rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-500 flex-shrink-0">
+                    <i data-lucide="leaf" class="w-6 h-6"></i>
+                </div>
+                <h1 id="nav-title" class="logo-text text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 whitespace-nowrap text-[#52796F] dark:text-[#84A98C]">
+                    ចម្ការតាណូ
+                </h1>
+            </div>
+
+            <!-- Search (Desktop) -->
+            <div class="hidden lg:flex items-center rounded-full px-5 py-3 border shadow-sm focus-within:shadow-md focus-within:border-[#84A98C] transition-all duration-500 w-80 bg-[#F2F0EB] border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white relative">
+                <i data-lucide="search" class="text-[#84A98C] w-5 h-5 flex-shrink-0"></i>
+                <input type="text" id="desktop-search" autocomplete="off" placeholder="ស្វែងរក..." aria-label="Search" class="bg-transparent border-none outline-none ml-3 w-full text-sm font-medium placeholder-gray-400">
+                <!-- Suggestions Dropdown -->
+                <div id="desktop-suggestions" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-[#2D3A37] border border-gray-100 dark:border-[#3E4E4A] rounded-2xl shadow-xl z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-3">
+                <!-- Cart Button -->
+                <button id="cart-btn" onclick="openCart()" aria-label="Open Cart" class="relative p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all group">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 text-[#52796F] dark:text-[#84A98C]"></i>
+                    <span id="cart-badge" class="absolute top-1 right-1 w-4 h-4 bg-[#E76F51] text-white text-[10px] font-bold rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                </button>
+
+                <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Toggle Theme">
+                    <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-[#2F3E46]"></i>
+                </button>
+                <button onclick="toggleLanguage()" aria-label="Change Language" class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Change Language">
+                    <i data-lucide="globe" class="w-5 h-5 text-[#52796F] dark:text-[#84A98C]"></i>
+                </button>
+
+                <div class="hidden md:flex flex-col items-end text-xs font-semibold ml-2">
+                    <a href="tel:+85517912024" aria-label="Call Us" class="flex items-center gap-1 hover:text-[#E76F51] transition-colors text-[#52796F] dark:text-[#84A98C]">
+                        <i data-lucide="phone" class="w-3.5 h-3.5"></i> 017 912 024
+                    </a>
+                </div>
+
+                <button aria-label="Mobile Search" class="lg:hidden p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10" onclick="focusSearch()">
+                    <i data-lucide="search" class="w-6 h-6 text-[#52796F] dark:text-[#84A98C]"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-16 px-4 overflow-hidden">
+        <!-- Background Blobs (Parallax Targets) -->
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6] to-[#EAE8E2] dark:from-[#1C2321] dark:to-[#2D3A37]"></div>
+        <div class="absolute top-20 right-0 w-96 h-96 bg-[#84A98C] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 animate-blob parallax-blob" data-speed="-0.02"></div>
+        <div class="absolute bottom-20 left-0 w-96 h-96 bg-[#F4A261] rounded-full mix-blend-multiply filter blur-[120px] opacity-15 animate-blob animation-delay-2000 parallax-blob" data-speed="0.02"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10 text-center px-4">
+            <span class="liquid-glass inline-block py-3 px-8 rounded-full text-[#354F52] text-sm font-bold mb-10 animate-fadeInUp cursor-default shadow-lg hover:scale-105 transition-transform duration-700">
+                <span class="relative z-10 flex items-center gap-2">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#E76F51]"></i> <span id="hero-badge">ធម្មជាតិពិតៗ ១០០%</span>
+                </span>
+            </span>
+
+            <h2 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-[#52796F] dark:text-[#84A98C]">
+                នាំយកធម្មជាតិ ចូលក្នុងគេហដ្ឋានរបស់អ្នក
+            </h2>
+
+            <p id="hero-subtitle" class="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light text-gray-500 dark:text-gray-400">
+                ផ្តល់ជូននូវរុក្ខជាតិ និងផ្កាស្រស់ៗពីចម្ការផ្ទាល់ ជាមួយនឹងតម្លៃសមរម្យ និងសេវាកម្មដឹកជញ្ជូនរហ័សទាន់ចិត្ត។
+            </p>
+
+            <!-- Promo Card -->
+            <div onclick="openModal('promo-modal')" class="transform hover:scale-[1.02] transition-transform duration-700 cursor-pointer inline-block w-full max-w-md mx-auto">
+                <div class="bg-gradient-to-r from-[#52796F] to-[#84A98C] text-white p-8 rounded-[2rem] shadow-2xl shadow-[#52796F]/20 flex items-center justify-between gap-6 border border-white/20 relative overflow-hidden dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#F4A261] rounded-full blur-3xl opacity-30"></div>
+                    <div class="flex items-center gap-5 relative z-10">
+                        <div class="bg-white/20 p-4 rounded-full flex-shrink-0 backdrop-blur-md">
+                            <i data-lucide="gift" class="w-8 h-8 text-white animate-pulse"></i>
+                        </div>
+                        <div class="text-left">
+                            <p id="promo-subtitle" class="text-xs font-bold text-white/80 uppercase tracking-widest mb-1">ការផ្តល់ជូនពិសេស</p>
+                            <h3 id="promo-title" class="text-3xl font-bold">ទិញ ៥០ ថែម ១</h3>
+                        </div>
+                    </div>
+                    <div class="bg-white/20 p-3 rounded-full relative z-10 transition-transform group-hover:translate-x-1">
+                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="mt-12 lg:hidden max-w-md mx-auto relative">
+                <div class="flex items-center rounded-2xl px-5 py-4 shadow-md border focus-within:border-[#84A98C] transition-all bg-[#F2F0EB] border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white">
+                    <i data-lucide="search" class="text-[#84A98C] w-6 h-6 flex-shrink-0"></i>
+                    <input id="mobile-search" type="text" autocomplete="off" aria-label="Search mobile" placeholder="ស្វែងរក..." class="bg-transparent border-none outline-none ml-3 w-full text-lg placeholder-gray-400">
+                </div>
+                <!-- Suggestions Dropdown -->
+                <div id="mobile-suggestions" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-[#2D3A37] border border-gray-100 dark:border-[#3E4E4A] rounded-2xl shadow-xl z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Switcher -->
+    <div id="category-sticky" class="sticky top-24 z-40 backdrop-blur-xl py-6 border-b transition-all duration-700 border-[#EAE8E2] bg-[#FAF9F6]/80 dark:border-[#2D3A37] dark:bg-[#1C2321]/80">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <!-- Switcher -->
+            <div class="max-w-xs sm:max-w-md w-full flex p-1.5 rounded-full relative shadow-inner bg-[#EAE8E2] dark:bg-[#2F3E46]">
+                <button onclick="setCategory('plant')" id="btn-plant" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white">
+                    <i data-lucide="leaf" class="w-4.5 h-4.5"></i> <span id="cat-plant-text">រុក្ខជាតិ</span>
+                </button>
+                <button onclick="setCategory('flower')" id="btn-flower" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400">
+                    <i data-lucide="flower-2" class="w-4.5 h-4.5"></i> <span id="cat-flower-text">ផ្កា</span>
+                </button>
+            </div>
+
+            <!-- Sorting & Filtering -->
+            <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto">
+                <span id="sort-label" class="text-sm font-bold text-gray-400 whitespace-nowrap">តម្រៀបតាម:</span>
+                <button id="sort-asc" onclick="sortProducts('price-asc')" class="px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ទាប-ខ្ពស់</button>
+                <button id="sort-desc" onclick="sortProducts('price-desc')" class="px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ខ្ពស់-ទាប</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-[60vh]">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
+            <!-- Products injected by JS -->
+        </div>
+    </main>
+
+    <!-- FAQ -->
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mb-24">
+        <h2 id="faq-title" class="text-2xl font-bold mb-8 text-center text-[#52796F] dark:text-[#84A98C]">សំណួរដែលសួរញឹកញាប់ (FAQ)</h2>
+        <div class="space-y-4">
+            <div class="border border-gray-200 dark:border-[#3E4E4A] rounded-2xl overflow-hidden">
+                <button aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left p-5 bg-white dark:bg-[#2D3A37] font-bold flex justify-between items-center hover:bg-gray-50 dark:hover:bg-[#354F52]">
+                    <span id="faq-1-q">តើមានសេវាដឹកជញ្ជូនដែរឬទេ?</span> <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                </button>
+                <div class="hidden p-5 bg-[#FAF9F6] dark:bg-[#1C2321] text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                    <span id="faq-1-a">បាទ/ចាស! យើងមានសេវាដឹកជញ្ជូន ២៥ ខេត្តក្រុង។ តម្លៃដឹកអាស្រ័យលើទីតាំងជាក់ស្តែង។</span>
+                </div>
+            </div>
+            <div class="border border-gray-200 dark:border-[#3E4E4A] rounded-2xl overflow-hidden">
+                <button aria-expanded="false" onclick="this.nextElementSibling.classList.toggle('hidden')" class="w-full text-left p-5 bg-white dark:bg-[#2D3A37] font-bold flex justify-between items-center hover:bg-gray-50 dark:hover:bg-[#354F52]">
+                    <span id="faq-2-q">តើរុក្ខជាតិងាប់អាចប្តូរបានទេ?</span> <i data-lucide="chevron-down" class="w-5 h-5"></i>
+                </button>
+                <div class="hidden p-5 bg-[#FAF9F6] dark:bg-[#1C2321] text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                    <span id="faq-2-a">យើងធានារុក្ខជាតិក្នុងរយៈពេល ៣ ថ្ងៃបន្ទាប់ពីទទួលបាន។ ប្រសិនបើមានបញ្ហា សូមថតរូបមកកាន់យើងខ្ញុំ។</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wrapper for hideable bottom elements -->
+    <div id="bottom-decor" class="transition-opacity duration-300">
+        <!-- Fixed Bottom Address -->
+        <div class="fixed bottom-6 left-0 right-0 z-40 pointer-events-none flex justify-center">
+            <div class="relative max-w-[95%] sm:max-w-sm md:max-w-3xl w-full mx-auto">
+                <!-- Growing Vine Animation -->
+                <div class="absolute bottom-[90%] left-0 w-full h-16 pointer-events-none z-50 overflow-visible">
+                   <div class="absolute bottom-0 left-0 transform -translate-x-1/2 translate-y-3">
+                     <svg width="40" height="40" viewBox="0 0 24 24" fill="#8B4513" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h16l-2 14H6L4 6z" /><path d="M2 4h20v2H2z" /></svg>
+                   </div>
+                   <svg class="w-full h-full overflow-visible" preserveAspectRatio="none">
+                     <defs>
+                       <linearGradient id="vineGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#84A98C" /><stop offset="100%" stop-color="#52796F" /></linearGradient>
+                     </defs>
+                     <path id="vine-path" d="M 10 35 Q 50 5, 100 35 T 200 35 T 300 35 T 400 35 T 500 35 T 600 35 T 800 35" fill="none" stroke="url(#vineGradient)" stroke-width="4" stroke-linecap="round" class="plant-vine-path" style="stroke-dasharray: 1000; stroke-dashoffset: 1000;"></path>
+
+                     <!-- Leaves -->
+                     <g class="leaf-group" style="transform: translate(20%, 20px) scale(0); transition: transform 0.5s;">
+                        <path d="M0 0 Q 10 -10, 20 0 Q 10 10, 0 0" fill="#84A98C" transform="rotate(-45)" />
+                     </g>
+                     <g class="leaf-group" style="transform: translate(40%, 20px) scale(0); transition: transform 0.5s;">
+                        <path d="M0 0 Q 10 -10, 20 0 Q 10 10, 0 0" fill="#84A98C" transform="rotate(45)" />
+                     </g>
+                     <g class="leaf-group" style="transform: translate(60%, 20px) scale(0); transition: transform 0.5s;">
+                        <path d="M0 0 Q 10 -10, 20 0 Q 10 10, 0 0" fill="#84A98C" transform="rotate(-45)" />
+                     </g>
+                     <g class="leaf-group" style="transform: translate(80%, 20px) scale(0); transition: transform 0.5s;">
+                        <path d="M0 0 Q 10 -10, 20 0 Q 10 10, 0 0" fill="#84A98C" transform="rotate(45)" />
+                     </g>
+                   </svg>
+                </div>
+
+                <!-- Address Box -->
+                <div class="py-3 px-8 rounded-full shadow-2xl pointer-events-auto overflow-hidden border backdrop-blur-xl bg-white/95 border-green-100 text-[#2D4F1E] dark:bg-[#2D3A37]/95 dark:border-[#3E4E4A] dark:text-white dark:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <div class="animate-marquee whitespace-nowrap flex items-center">
+                        <span class="mx-8 flex items-center gap-3 text-sm md:text-base font-medium tracking-wide"><i data-lucide="map-pin" class="w-4.5 h-4.5 text-[#E76F51]"></i> # ភូមិព្រែកកាត់ សង្កាត់តាក្ដុល ក្រុងតាខ្មៅ ខេត្តកណ្ដាល</span>
+                        <span class="mx-8 flex items-center gap-3 text-sm md:text-base font-medium tracking-wide"><i data-lucide="map-pin" class="w-4.5 h-4.5 text-[#E76F51]"></i> # ភូមិព្រែកកាត់ សង្កាត់តាក្ដុល ក្រុងតាខ្មៅ ខេត្តកណ្ដាល</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="hidden fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-xl transition-opacity" onclick="closeModal('product-modal')"></div>
+        <div class="bg-white text-[#4A4E4D] w-full md:max-w-5xl h-[95vh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col md:flex-row dark:bg-[#2D3A37] dark:text-[#EAE8E2] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+            <div id="modal-content" class="flex flex-col md:flex-row w-full h-full"></div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="hidden fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity" onclick="closeModal('cart-modal')"></div>
+        <div class="bg-white text-[#4A4E4D] w-full md:max-w-lg h-[90vh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col dark:bg-[#2D3A37] dark:text-[#EAE8E2]">
+            <div class="p-6 border-b border-gray-100 dark:border-[#3E4E4A] flex justify-between items-center">
+                <h2 id="cart-title" class="text-2xl font-bold">កន្ត្រកទំនិញ (Cart)</h2>
+                <button onclick="closeModal('cart-modal')" aria-label="Close Cart" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#3E4E4A]"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                <!-- Items injected here -->
+                <div class="text-center opacity-50 py-10" id="cart-empty-text">កន្ត្រកទំនិញនៅទំនេរ</div>
+            </div>
+
+            <!-- Delivery Info inside Cart -->
+            <div class="px-6 py-4 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50/50 dark:bg-[#1C2321]/50 space-y-3">
+                <div class="flex items-center gap-3 font-bold text-sm opacity-80 text-[#2D4F1E] dark:text-[#EAE8E2] mb-1">
+                    <i data-lucide="truck" class="w-4 h-4"></i> <span id="delivery-info-title">ព័ត៌មានដឹកជញ្ជូន</span>
+                </div>
+                <!-- Pickup vs Delivery Toggle -->
+                <div class="flex p-1 rounded-xl bg-gray-200 dark:bg-[#2F3E46] mb-3">
+                    <button id="btn-pickup" type="button" onclick="setDeliveryMode('pickup')" class="flex-1 py-2 text-sm font-bold rounded-lg bg-white shadow text-[#52796F] dark:bg-[#52796F] dark:text-white transition-all">ទទួលនៅចម្ការ</button>
+                    <button id="btn-delivery" type="button" onclick="setDeliveryMode('delivery')" class="flex-1 py-2 text-sm font-bold rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-all">ដឹកជញ្ជូន</button>
+                </div>
+                <div id="delivery-fields" class="space-y-3 hidden">
+                    <input type="text" id="del-phone" placeholder="លេខទូរស័ព្ទ (Phone)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required>
+                    <textarea id="del-address" placeholder="ទីតាំង (Address)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] h-20 resize-none text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required></textarea>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50 dark:bg-[#1C2321]">
+                <!-- Promo discount row (shown by JS when applicable) -->
+                <div id="cart-discount-row" class="hidden flex justify-between items-center mb-3 text-sm font-bold text-[#E76F51]">
+                    <span id="cart-discount-label">Promo</span>
+                    <span id="cart-discount">-$0.00</span>
+                </div>
+                <div class="flex justify-between items-center mb-6">
+                    <span id="cart-total-label" class="text-lg font-bold">សរុប (Total)</span>
+                    <span id="cart-total" class="text-3xl font-bold text-[#2D4F1E] dark:text-[#84A98C]">$0.00</span>
+                </div>
+                <button id="checkout-btn" onclick="checkoutCart()" class="w-full bg-[#52796F] hover:bg-[#354F52] text-white py-4 rounded-xl font-bold text-lg shadow-lg active:scale-95 flex items-center justify-center gap-3">
+                    <i data-lucide="check-circle-2" class="w-6 h-6"></i> <span id="btn-checkout">គិតលុយ (Checkout)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal (With Demo Warning) -->
+    <div id="payment-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 overflow-y-auto">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeModal('payment-modal')"></div>
+        <div class="bg-[#005F7F] w-full max-w-sm rounded-[2.5rem] shadow-2xl relative z-20 dark:shadow-[0_0_30px_rgba(255,255,255,0.05)] my-6 max-h-[92vh] overflow-y-auto">
+            <!-- Header -->
+            <div class="bg-[#007ba4] p-8 text-center relative">
+                <span class="bg-red-500 text-white text-[10px] font-bold px-3 py-1 rounded-full absolute top-4 left-4 tracking-widest uppercase shadow-md border border-white/20">Demo Mode</span>
+                <button aria-label="Close Payment Modal" onclick="closeModal('payment-modal')" class="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+
+                <div class="w-20 h-20 bg-white rounded-2xl mx-auto flex items-center justify-center mb-4 shadow-lg mt-4">
+                    <span class="text-[#005F7F] font-black text-3xl">ABA</span>
+                </div>
+                <h3 class="text-white font-bold text-2xl mb-1">KHQR Payment</h3>
+                <p id="payment-scan-text" class="text-white/80 text-sm">ស្កេន ឬ បើកកម្មវិធីដើម្បីបង់ប្រាក់</p>
+            </div>
+
+            <!-- Body -->
+            <div class="bg-white m-3 rounded-[2rem] p-8 flex flex-col items-center shadow-inner relative">
+                <!-- Success Overlay -->
+                <div id="payment-success-overlay" class="hidden absolute inset-0 z-30 bg-white/95 backdrop-blur flex flex-col items-center justify-center rounded-[2rem]">
+                    <i data-lucide="check-circle-2" class="w-24 h-24 text-green-500 mb-6 animate-bounce"></i>
+                    <h3 id="payment-success-text" class="text-3xl font-bold text-green-800 mb-2">ការបង់ប្រាក់ជោគជ័យ!</h3>
+                    <div class="flex items-center gap-2 mt-6 text-green-700 font-medium bg-green-50 px-5 py-3 rounded-full border border-green-100 text-center">
+                        <i data-lucide="trees" class="w-5 h-5 flex-shrink-0"></i> <span id="eco-text" class="text-sm">+1 ដើមឈើត្រូវបានដាំសម្រាប់ការកុម្ម៉ង់នេះ</span>
+                    </div>
+                </div>
+
+                <div class="mb-6 text-center">
+                    <p id="merchant-label" class="text-gray-400 text-xs uppercase tracking-widest font-bold mb-1">Merchant Name</p>
+                    <h4 class="font-bold text-2xl text-gray-800 tracking-tight">TANO GARDEN (DEMO)</h4>
+                </div>
+
+                <div class="bg-white p-3 border-2 border-[#E31D1A] rounded-xl relative shadow-sm">
+                    <!-- Corners -->
+                    <div class="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-[#E31D1A] -mt-1 -ml-1"></div>
+                    <div class="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-[#E31D1A] -mt-1 -mr-1"></div>
+                    <div class="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-[#E31D1A] -mb-1 -ml-1"></div>
+                    <div class="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-[#E31D1A] -mb-1 -mr-1"></div>
+
+                    <img id="qr-code-img" src="" alt="ABA KHQR" class="w-56 h-56 transition-opacity duration-500">
+
+                    <!-- Loading Overlay -->
+                    <div id="payment-checking" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-white/80">
+                        <i data-lucide="loader-2" class="w-10 h-10 text-[#005F7F] animate-spin mb-3"></i>
+                        <span id="detecting-text" class="text-[#005F7F] font-bold animate-pulse text-sm">Detecting Demo Pay...</span>
+                    </div>
+                </div>
+
+                <button onclick="alert('This is a demo UI. Use the Simulate Payment text below.')" class="mt-8 w-full bg-[#005F7F] hover:bg-[#004a63] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition-colors active:scale-95 text-lg shadow-lg shadow-blue-900/20">
+                    <i data-lucide="smartphone" class="w-5.5 h-5.5"></i> <span id="btn-open-app">បើកកម្មវិធី ABA Mobile</span>
+                </button>
+
+                <button onclick="simulatePayment()" class="mt-4 text-xs font-bold text-gray-400 hover:text-[#E31D1A] underline transition-colors" id="btn-sim-pay">(Demo: Simulate Pay)</button>
+
+                <div class="mt-6 w-full flex items-center justify-between border-t border-dashed border-gray-300 pt-6">
+                    <span id="label-total" class="text-gray-500 font-medium">តម្លៃសរុប</span>
+                    <span id="payment-total" class="text-3xl font-bold text-[#E31D1A]">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="px-6 pb-6 pt-2">
+                <button id="btn-send-telegram" onclick="sendOrder()" class="w-full py-4 rounded-xl font-bold text-lg shadow-lg transition-all flex items-center justify-center gap-3 active:scale-95 bg-white hover:bg-gray-100 text-[#005F7F]">
+                    <i data-lucide="send" class="w-5 h-5"></i> <span>ផ្ញើការកុម្ម៉ង់</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promo Modal -->
+    <div id="promo-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('promo-modal')"></div>
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full relative z-10 shadow-2xl dark:bg-[#2D3A37] dark:text-white">
+            <button aria-label="Close Promotion" onclick="closeModal('promo-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+                    <i data-lucide="shopping-cart" class="w-8 h-8"></i>
+                </div>
+                <h3 id="promo-modal-title" class="text-2xl font-bold text-green-800 dark:text-[#84A98C]">ប្រូម៉ូសិនពិសេស!</h3>
+                <p id="promo-modal-offer" class="text-green-600 font-bold text-lg mt-1 dark:text-[#52796F]">ទិញ ៥០ ថែម ១</p>
+            </div>
+            <div class="space-y-4 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                <p id="promo-desc" class="text-center font-medium">✨ ការផ្តល់ជូនពិសេសសម្រាប់អតិថិជនដែលទិញដើមឈើចាប់ពី ៥០ ដើមឡើងទៅ!</p>
+                <div class="bg-green-50 p-4 rounded-xl border border-green-100 dark:bg-[#1C2321] dark:border-[#3E4E4A]">
+                    <h4 id="promo-cond-title" class="font-bold text-green-800 dark:text-[#84A98C] mb-2">លក្ខខណ្ឌងាយៗ៖</h4>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li id="cond-1">សម្រាប់ការទិញទូទាត់ក្នុងវិក្កយបត្រ (បុង) តែមួយ</li>
+                        <li id="cond-2">ប្រូម៉ូសិននេះអនុវត្តចំពោះគ្រប់ប្រភេទដើមឈើ និងផ្កាទាំងអស់!</li>
+                        <li id="cond-3">ចំពោះការថែមជូន គឺយើងនឹងគិតយកដើមណាដែលមានតម្លៃធូរថ្លៃជាងគេក្នុងវិក្កយបត្រ។</li>
+                    </ul>
+                </div>
+            </div>
+            <button id="btn-close-promo" onclick="closeModal('promo-modal')" class="w-full mt-6 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-bold shadow-lg shadow-green-200 transition-all">បិទ</button>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('profile-modal')"></div>
+        <div class="bg-white rounded-[2.5rem] w-full max-w-lg relative z-10 shadow-2xl overflow-hidden dark:bg-[#2D3A37] dark:text-white transform transition-all flex flex-col max-h-[90vh]">
+             <div class="overflow-y-auto flex-1">
+                 <!-- Header / Cover -->
+                 <div class="h-32 bg-gradient-to-r from-[#1C2321] to-[#52796F] relative">
+                     <button aria-label="Close Profile" onclick="closeModal('profile-modal')" class="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full backdrop-blur-sm transition-colors z-20"><i data-lucide="x" class="w-5 h-5"></i></button>
+                 </div>
+
+                 <div class="px-8 pb-8">
+                     <!-- Profile Pic overlapping cover -->
+                     <div class="-mt-16 mb-6 text-center relative z-10">
+                         <div class="w-32 h-32 mx-auto rounded-full border-[6px] border-white dark:border-[#2D3A37] shadow-xl overflow-hidden bg-white mb-4">
+                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="Profile Picture">
+                         </div>
+                         <h3 class="text-3xl font-bold text-gray-800 dark:text-white">CHHON SOVANDARA</h3>
+                         <div class="flex items-center justify-center gap-2 text-[#52796F] dark:text-[#84A98C] font-medium mt-1">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i> Phnom Penh, Cambodia
+                         </div>
+                     </div>
+
+                     <div class="space-y-6 text-left">
+                         <!-- About -->
+                         <div>
+                            <h4 class="text-lg font-bold border-b border-gray-100 dark:border-gray-700 pb-2 mb-3 text-[#E76F51]">About Me</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                                A diligent and forward-thinking Grade 12 student in Cambodia, actively preparing for university and a future career. Passionate about technology and science, and committed to achieving academic excellence.
+                            </p>
+                         </div>
+
+                         <!-- Education -->
+                         <div>
+                            <h4 class="text-lg font-bold border-b border-gray-100 dark:border-gray-700 pb-2 mb-3 text-[#E76F51]">Education</h4>
+                            <div class="bg-gray-50 dark:bg-[#1C2321] p-4 rounded-xl">
+                                <h5 class="font-bold text-gray-800 dark:text-white">High School Diploma </h5>
+                                <p class="text-sm text-[#52796F] font-semibold mb-2">Beltei International School</p>
+                                <div class="text-sm text-gray-600 dark:text-gray-300 space-y-1">
+                                    <p>Currently in Grade 12 (Final Year)</p>
+                                    <p><strong>Focus:</strong> Science Physics &amp; Mathematics</p>
+                                </div>
+                            </div>
+                         </div>
+
+                         <!-- Skills & Goals -->
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                             <div>
+                                <h4 class="text-lg font-bold border-b border-gray-100 dark:border-gray-700 pb-2 mb-3 text-[#E76F51]">Skills</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-[#1C2321] rounded-full text-xs font-bold text-gray-600 dark:text-gray-300">Kind-hearted</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-[#1C2321] rounded-full text-xs font-bold text-gray-600 dark:text-gray-300">Research</span>
+                                    <span class="px-3 py-1 bg-gray-100 dark:bg-[#1C2321] rounded-full text-xs font-bold text-gray-600 dark:text-gray-300">Team Projects</span>
+                                </div>
+                             </div>
+                             <div>
+                                <h4 class="text-lg font-bold border-b border-gray-100 dark:border-gray-700 pb-2 mb-3 text-[#E76F51]">Goals</h4>
+                                <p class="text-xs text-gray-600 dark:text-gray-300 leading-relaxed italic">
+                                    "To pursue a degree in Computer Science and contribute to Cambodia's digital development."
+                                </p>
+                             </div>
+                         </div>
+                     </div>
+
+                     <div class="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700 flex justify-center gap-4">
+                         <button onclick="closeModal('profile-modal')" class="px-8 py-3 rounded-xl bg-gray-900 text-white font-bold hover:bg-gray-800 transition-colors shadow-lg active:scale-95 dark:bg-[#52796F] dark:hover:bg-[#354F52]">Close</button>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-[#2D3A37] to-[#1C2321] text-white pt-24 pb-32 rounded-t-[3rem] mt-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 relative z-10">
+            <div class="space-y-10">
+                <div class="p-10 rounded-[2.5rem] border-l-4 border-[#E76F51] relative overflow-hidden group hover:bg-white/5 transition-colors bg-[rgba(255,255,255,0.15)] backdrop-blur-[15px] border border-[rgba(255,255,255,0.2)] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+                    <h2 id="footer-thank" class="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-[#E76F51]">សូមអរគុណ</h2>
+                    <p id="footer-msg" class="text-white/80 text-lg leading-relaxed font-light italic">"ពួកយើងមានកិត្តិយសណាស់ដែលលោកអ្នកបានជ្រើសរើស ចម្ការតាណូ។ រាល់ការជាវរបស់លោកអ្នក គឺជាកម្លាំងចិត្តដ៏ធំធេងសម្រាប់ពួកយើង។"</p>
+                </div>
+                <div class="rounded-[2.5rem] overflow-hidden border-4 border-white/10 shadow-2xl h-64 md:h-72 relative group">
+                    <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=11.468869,104.928570&z=15&t=k&output=embed" allowfullscreen loading="lazy" class="group-hover:opacity-90 transition-all duration-700" title="Farm Location"></iframe>
+                </div>
+
+                <!-- Developer Trigger Card -->
+                <div onclick="openModal('profile-modal')" class="mt-8 group cursor-pointer relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 p-6 transition-all duration-500 hover:bg-white/10 hover:shadow-2xl hover:shadow-[#52796F]/20 hover:-translate-y-1">
+                    <div class="absolute -top-10 -right-10 w-20 h-20 bg-[#52796F] rounded-full blur-3xl opacity-0 group-hover:opacity-30 transition-opacity duration-700"></div>
+                    <div class="flex items-center gap-5 relative z-10">
+                        <div class="relative w-16 h-16 shrink-0">
+                            <div class="absolute inset-0 rounded-full border border-white/20 group-hover:border-[#E76F51] transition-colors duration-500"></div>
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Developer" class="w-full h-full rounded-full object-cover p-1">
+                        </div>
+                        <div class="flex-1 text-left">
+                            <p class="text-[10px] font-bold tracking-widest text-[#E76F51] uppercase mb-1 opacity-80">Profile</p>
+                            <h3 class="text-lg font-bold text-white leading-tight group-hover:text-green-100 transition-colors">CHHON SOVANDARA</h3>
+                            <p class="text-xs text-gray-400 mt-1 line-clamp-1 group-hover:text-gray-300 transition-colors">"Passionate learner..."</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#E76F51] group-hover:text-white transition-all duration-300 transform group-hover:translate-x-1">
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col justify-center space-y-8">
+                <h3 id="footer-contact" class="text-3xl font-bold mb-4 border-b border-white/20 pb-4 inline-block w-max">ទំនាក់ទំនងយើងខ្ញុំ</h3>
+                <a href="https://t.me/koyches" target="_blank" rel="noreferrer" class="group flex items-center justify-between bg-[#0088CC] hover:bg-[#0077B5] text-white p-5 rounded-2xl transition-all hover:scale-[1.02] shadow-xl">
+                    <div class="flex items-center gap-5">
+                        <div class="bg-white/20 p-3.5 rounded-full"><i data-lucide="send" class="w-7 h-7"></i></div>
+                        <div><p id="chat-telegram-label" class="text-xs text-blue-100 font-medium uppercase tracking-wider">Chat on Telegram</p><p class="text-2xl font-bold tracking-tight">@koyches</p></div>
+                    </div>
+                    <i data-lucide="check-circle-2" class="w-7 h-7 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                </a>
+                <div class="flex gap-6">
+                    <a href="https://www.facebook.com/share/14RfofRvpqR/" target="_blank" rel="noreferrer" class="flex-1 bg-white/5 hover:bg-white/10 p-6 rounded-2xl flex items-center justify-center gap-3 transition-colors border border-white/5">
+                        <i data-lucide="facebook" class="w-6 h-6"></i> <span id="facebook-label" class="font-bold">Facebook</span>
+                    </a>
+                </div>
+                <div class="mt-12 text-center md:text-left text-[#84A98C] text-sm font-medium tracking-wide">© 2026 TANO Garden. All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic Script -->
+    <script>
+// ============================================================
+// CONNECT THIS TO YOUR BACKEND
+// Local development uses http://localhost:8000.
+// On your real site it uses PROD_API_BASE: change that to your real API URL.
+// Your backend must allow your site's origin in its CORS settings.
+// ============================================================
+const PROD_API_BASE = "https://api.tanogarden.com"; // <-- CHANGE THIS
+const API_BASE = (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.protocol === 'file:')
+    ? "http://localhost:8000"
+    : PROD_API_BASE;
+
+let PLANTS_DATA = [];
+let FLOWERS_DATA = [];
+let productsLoadFailed = false;
+
+const PROMO_EVERY = 50; // buy 50, get 1 free (cheapest item in the order)
+
+function formatPrice(price) {
+    return `$${Number(price).toFixed(2)}`;
+}
+
+function escapeHtml(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function itemName(item) {
+    return language === 'kh' ? item.name : (item.name_en || item.name);
+}
+
+function itemDesc(item) {
+    return language === 'kh' ? (item.description || '') : (item.description_en || item.description || '');
+}
+
+function allProducts() {
+    return [...PLANTS_DATA, ...FLOWERS_DATA];
+}
+
+function findProduct(id) {
+    return allProducts().find(p => p.id === id);
+}
+
+// ============================================================
+// YOUR PRODUCTS: add, edit or delete items in this list.
+// Put your photos in an "images" folder next to index.html.
+// category must be 'plant' or 'flower'. Every id must be unique.
+// ============================================================
+const USE_API = false; // false = use the list below (works on GitHub Pages)
+const PRODUCTS = [
+    { id: 1, category: 'plant',  name: 'ដើមស្វាយ',      name_en: 'Mango Tree',  price: 5.00,
+      description: 'ដើមស្វាយពូជល្អ ផ្លែផ្អែម។', description_en: 'Healthy mango sapling with sweet fruit.', image: 'images/mango.jpg' },
+    { id: 2, category: 'plant',  name: 'ដើមក្រូចឆ្មារ',   name_en: 'Lime Tree',   price: 3.50,
+      description: 'ដើមក្រូចឆ្មារ ងាយដាំ។', description_en: 'Easy to grow lime tree.', image: 'images/lime.jpg' },
+    { id: 3, category: 'flower', name: 'ផ្កាកុលាប',      name_en: 'Rose',        price: 2.00,
+      description: 'ផ្កាកុលាបស្រស់ៗ ពណ៌ស្អាត។', description_en: 'Fresh roses in beautiful colors.', image: 'images/rose.jpg' },
+    { id: 4, category: 'flower', name: 'ផ្កាម្លិះ',       name_en: 'Jasmine',     price: 1.50,
+      description: 'ផ្កាម្លិះក្លិនក្រអូប។', description_en: 'Sweet-smelling jasmine.', image: 'images/jasmine.jpg' },
+];
+
+async function loadProductsFromApi() {
+    if (!USE_API) {
+        PLANTS_DATA = PRODUCTS.filter(p => p.category === 'plant');
+        FLOWERS_DATA = PRODUCTS.filter(p => p.category === 'flower');
+        productsLoadFailed = false;
+        return;
+    }
+    try {
+        const res = await fetch(`${API_BASE}/api/products`);
+        if (!res.ok) throw new Error("Failed to load products");
+        const products = await res.json();
+        PLANTS_DATA = products.filter(p => p.category === 'plant');
+        FLOWERS_DATA = products.filter(p => p.category === 'flower');
+        productsLoadFailed = false;
+    } catch (err) {
+        console.error("Could not load products from API:", err);
+        PLANTS_DATA = [];
+        FLOWERS_DATA = [];
+        productsLoadFailed = true;
+    }
+}
+
+const TRANSLATIONS = {
+    kh: {
+        title: 'ចម្ការតាណូ',
+        searchPlaceholder: 'ស្វែងរក រុក្ខជាតិ ឬ ផ្កា...',
+        heroTitle: 'នាំយកធម្មជាតិ ចូលក្នុងគេហដ្ឋានរបស់អ្នក',
+        heroSubtitle: 'ផ្តល់ជូននូវរុក្ខជាតិ និងផ្កាស្រស់ៗពីចម្ការផ្ទាល់ ជាមួយនឹងតម្លៃសមរម្យ និងសេវាកម្មដឹកជញ្ជូនរហ័សទាន់ចិត្ត។',
+        natureBadge: 'ធម្មជាតិពិតៗ ១០០%',
+        promoTitle: 'ទិញ ៥០ ថែម ១',
+        promoSubtitle: 'ការផ្តល់ជូនពិសេស',
+        plants: 'រុក្ខជាតិ',
+        flowers: 'ផ្កា',
+        noData: 'មិនមានទិន្នន័យ...',
+        loadFailed: 'មិនអាចទាញយកផលិតផលបានទេ។ សូមព្យាយាមម្តងទៀត។',
+        retry: 'ព្យាយាមម្តងទៀត',
+        clickDetails: 'ចុចដើម្បីមើលលម្អិត',
+        chatTitle: 'សេវាកម្មអតិថិជន',
+        chatOnline: 'កំពុងដំណើរការ',
+        chatPlaceholder: 'សួរអ្វីមួយ...',
+        deliveryInfo: 'ព័ត៌មានដឹកជញ្ជូន',
+        phonePlaceholder: 'លេខទូរស័ព្ទ (Phone)',
+        addressPlaceholder: 'ទីតាំង (Address)',
+        quantity: 'ចំនួន',
+        total: 'តម្លៃសរុប',
+        checkout: 'បន្តទៅការទូទាត់',
+        scanPay: 'ស្កេន ឬ បើកកម្មវិធីដើម្បីបង់ប្រាក់',
+        paymentSuccess: 'ការបង់ប្រាក់ជោគជ័យ!',
+        openApp: 'បើកកម្មវិធី ABA Mobile',
+        sendOrder: 'ផ្ញើការកុម្ម៉ង់',
+        sendPaidOrder: 'ផ្ញើការកុម្ម៉ង់ (បានបង់ប្រាក់)',
+        thankYou: 'សូមអរគុណ',
+        thankYouMessage: 'ពួកយើងមានកិត្តិយសណាស់ដែលលោកអ្នកបានជ្រើសរើស ចម្ការតាណូ។ រាល់ការជាវរបស់លោកអ្នក គឺជាកម្លាំងចិត្តដ៏ធំធេងសម្រាប់ពួកយើង។',
+        contactUs: 'ទំនាក់ទំនងយើងខ្ញុំ',
+        aiTipBtn: 'សុំគន្លឹះថែទាំរុក្ខជាតិ',
+        aiTipTitle: 'គន្លឹះថែទាំ',
+        share: 'ចែករំលែក',
+        plantDoctor: 'សេវាកម្មអតិថិជន',
+        plantDoctorDesc: 'Live Support',
+        plantOfTheDay: 'រុក្ខជាតិប្រចាំថ្ងៃ',
+        ecoImpact: '+1 ដើមឈើត្រូវបានដាំសម្រាប់ការកុម្ម៉ង់នេះ',
+        addToCart: 'ដាក់ចូលកន្ត្រក',
+        faqTitle: 'សំណួរដែលសួរញឹកញាប់ (FAQ)',
+        faq1Q: 'តើមានសេវាដឹកជញ្ជូនដែរឬទេ?',
+        faq1A: 'បាទ/ចាស! យើងមានសេវាដឹកជញ្ជូន ២៥ ខេត្តក្រុង។ តម្លៃដឹកអាស្រ័យលើទីតាំងជាក់ស្តែង។',
+        faq2Q: 'តើរុក្ខជាតិងាប់អាចប្តូរបានទេ?',
+        faq2A: 'យើងធានារុក្ខជាតិក្នុងរយៈពេល ៣ ថ្ងៃបន្ទាប់ពីទទួលបាន។ ប្រសិនបើមានបញ្ហា សូមថតរូបមកកាន់យើងខ្ញុំ។',
+        sortLabel: 'តម្រៀបតាម:',
+        sortAsc: 'តម្លៃ ទាប-ខ្ពស់',
+        sortDesc: 'តម្លៃ ខ្ពស់-ទាប',
+        cartTitle: 'កន្ត្រកទំនិញ (Cart)',
+        cartEmpty: 'កន្ត្រកទំនិញនៅទំនេរ',
+        remove: 'លុប',
+        promoDiscount: 'ប្រូម៉ូសិន (ទិញ ៥០ ថែម ១)',
+        merchantLabel: 'Merchant Name',
+        merchantName: 'TANO GARDEN (DEMO)',
+        detecting: 'Detecting Demo Pay...',
+        simulatePay: '(Demo: Simulate Pay)',
+        promoModalTitle: 'ប្រូម៉ូសិនពិសេស!',
+        promoModalOffer: 'ទិញ ៥០ ថែម ១',
+        promoDesc: '✨ ការផ្តល់ជូនពិសេសសម្រាប់អតិថិជនដែលទិញដើមឈើចាប់ពី ៥០ ដើមឡើងទៅ!',
+        promoCondTitle: 'លក្ខខណ្ឌងាយៗ៖',
+        cond1: 'សម្រាប់ការទិញទូទាត់ក្នុងវិក្កយបត្រ (បុង) តែមួយ',
+        cond2: 'ប្រូម៉ូសិននេះអនុវត្តចំពោះគ្រប់ប្រភេទដើមឈើ និងផ្កាទាំងអស់!',
+        cond3: 'ចំពោះការថែមជូន គឺយើងនឹងគិតយកដើមណាដែលមានតម្លៃធូរថ្លៃជាងគេក្នុងវិក្កយបត្រ។',
+        btnClose: 'បិទ',
+        chatTelegramLabel: 'Chat on Telegram',
+        facebookLabel: 'Facebook',
+        specialBadge: 'ពិសេស',
+        chatWelcome: 'ជំរាបសួរ! តើមានអ្វីឱ្យខ្ញុំជួយអ្នកទេ?',
+        chatNeedPhone: 'សូមបញ្ចូលលេខទូរស័ព្ទ និងទីតាំងនៅក្នុងកន្ត្រកទំនិញរបស់អ្នកមុនពេលគិតលុយ។',
+        orderNotSaved: 'ការកុម្ម៉ង់មិនទាន់ត្រូវបានរក្សាទុកក្នុងប្រព័ន្ធទេ។ សូមផ្ញើតាម Telegram ហើយរក្សាកន្ត្រករបស់អ្នកទុក។',
+        linkCopied: 'បានចម្លងតំណ!',
+        pickup: 'ទទួលនៅចម្ការ',
+        delivery: 'ដឹកជញ្ជូន'
+    },
+    en: {
+        title: 'Tano Garden',
+        searchPlaceholder: 'Search plants or flowers...',
+        heroTitle: 'Bring Nature Into Your Home',
+        heroSubtitle: 'Providing fresh plants and flowers directly from the farm with reasonable prices and fast delivery service.',
+        natureBadge: '100% Real Nature',
+        promoTitle: 'Buy 50 Get 1 Free',
+        promoSubtitle: 'Special Offer',
+        plants: 'Plants',
+        flowers: 'Flowers',
+        noData: 'No items found...',
+        loadFailed: 'Could not load products. Please try again.',
+        retry: 'Retry',
+        clickDetails: 'Click for details',
+        chatTitle: 'Customer Support',
+        chatOnline: 'Online',
+        chatPlaceholder: 'Ask something...',
+        deliveryInfo: 'Delivery Info',
+        phonePlaceholder: 'Phone Number',
+        addressPlaceholder: 'Delivery Address',
+        quantity: 'Quantity',
+        total: 'Total',
+        checkout: 'Proceed to Checkout',
+        scanPay: 'Scan or Open App to Pay',
+        paymentSuccess: 'Payment Successful!',
+        openApp: 'Open ABA Mobile App',
+        sendOrder: 'Send Order',
+        sendPaidOrder: 'Send Paid Order',
+        thankYou: 'Thank You',
+        thankYouMessage: 'We are honored that you chose Tano Garden. Your purchase is a great encouragement for us to maintain quality and service.',
+        contactUs: 'Contact Us',
+        aiTipBtn: 'Get Plant Care Tips',
+        aiTipTitle: 'Care Tips',
+        share: 'Share',
+        plantDoctor: 'Customer Support',
+        plantDoctorDesc: 'Live Support',
+        plantOfTheDay: 'Plant of the Day',
+        ecoImpact: '+1 Tree Planted with This Order',
+        addToCart: 'Add to Cart',
+        faqTitle: 'Frequently Asked Questions (FAQ)',
+        faq1Q: 'Is there a delivery service?',
+        faq1A: 'Yes! We deliver to 25 provinces/cities. Delivery fee depends on actual location.',
+        faq2Q: 'Can dead plants be exchanged?',
+        faq2A: 'We guarantee plants within 3 days after receipt. If there is a problem, please take a photo and send it to us.',
+        sortLabel: 'Sort by:',
+        sortAsc: 'Price Low-High',
+        sortDesc: 'Price High-Low',
+        cartTitle: 'Shopping Cart',
+        cartEmpty: 'Cart is empty',
+        remove: 'Remove',
+        promoDiscount: 'Promo (Buy 50 Get 1 Free)',
+        merchantLabel: 'Merchant Name',
+        merchantName: 'TANO GARDEN (DEMO)',
+        detecting: 'Detecting Demo Pay...',
+        simulatePay: '(Demo: Simulate Pay)',
+        promoModalTitle: 'Special Promotion!',
+        promoModalOffer: 'Buy 50 Get 1 Free',
+        promoDesc: '✨ Special offer for customers who buy 50 or more trees!',
+        promoCondTitle: 'Conditions:',
+        cond1: 'For single receipt purchase',
+        cond2: 'Applies to all types of trees and flowers',
+        cond3: 'Free item based on lowest price in receipt',
+        btnClose: 'Close',
+        chatTelegramLabel: 'Chat on Telegram',
+        facebookLabel: 'Facebook',
+        specialBadge: 'Special',
+        chatWelcome: 'Hello! How can I help you today?',
+        chatNeedPhone: 'Please fill in your phone number and address in the cart before checking out.',
+        orderNotSaved: 'Your order could not be saved to our system. Please send it via Telegram; your cart has been kept.',
+        linkCopied: 'Link copied!',
+        pickup: 'Pick up at farm',
+        delivery: 'Delivery'
+    }
+};
+
+// State
+let activeCategory = 'plant';
+let searchQuery = '';
+let selectedItem = null;
+let orderQuantity = 1;
+let isDarkMode = false;
+let language = 'kh';
+let paymentStatus = 'pending';
+let chatMessages = [];
+let deliveryMode = 'pickup';
+let sortMode = null;
+
+// Cart is stored as [{ id, qty }] only. Names and prices are always looked up
+// from the products loaded from the API, so stale or edited local data can't change prices.
+let cart = [];
+try {
+    const savedCart = JSON.parse(localStorage.getItem('tano_cart') || '[]');
+    if (Array.isArray(savedCart)) {
+        cart = savedCart
+            .filter(i => i && i.id !== undefined && Number(i.qty) > 0)
+            .map(i => ({ id: i.id, qty: Math.floor(Number(i.qty)) }));
+    }
+} catch (e) {
+    console.error("Could not load cart data", e);
+}
+
+function setText(id, text) {
+    const el = document.getElementById(id);
+    if (el) el.innerText = text;
+}
+
+// Initialization
+window.addEventListener('DOMContentLoaded', async () => {
+    chatMessages = [{ role: 'assistant', text: TRANSLATIONS[language].chatWelcome }];
+    await loadProductsFromApi();
+    renderPlantOfTheDay();
+    renderProducts();
+    updateLanguageUI();
+    updateCartBadge();
+    lucide.createIcons();
+
+    // Scroll Listener
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        const vinePath = document.getElementById('vine-path');
+        const catSticky = document.getElementById('category-sticky');
+        const footer = document.querySelector('footer');
+
+        // Parallax
+        document.querySelectorAll('.parallax-blob').forEach(blob => {
+            const speed = blob.getAttribute('data-speed');
+            blob.style.transform = `translateY(${window.scrollY * speed}px)`;
+        });
+
+        if (footer && catSticky) {
+            const rect = footer.getBoundingClientRect();
+            if (rect.top < window.innerHeight) {
+                catSticky.classList.add('opacity-0', '-translate-y-full', 'pointer-events-none');
+            } else {
+                catSticky.classList.remove('opacity-0', '-translate-y-full', 'pointer-events-none');
+            }
+        }
+
+        // Navbar uses dark: variants so it stays correct when the theme changes
+        if (window.scrollY > 20) {
+            nav.classList.add('glass-nav', 'py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
+            nav.classList.remove('bg-transparent', 'py-6');
+        } else {
+            nav.classList.remove('glass-nav', 'py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
+            nav.classList.add('bg-transparent', 'py-6');
+        }
+
+        // Vine Animation
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? Math.min(Math.max(window.scrollY / docHeight, 0), 1) : 0;
+
+        if (vinePath) {
+            vinePath.style.strokeDashoffset = 1000 - (scrollPercent * 1000);
+        }
+
+        document.querySelectorAll('.leaf-group').forEach((leaf, idx) => {
+            const threshold = 0.2 + (idx * 0.2);
+            if (scrollPercent > threshold) {
+                leaf.style.transform = leaf.style.transform.replace('scale(0)', 'scale(1)');
+            } else {
+                leaf.style.transform = leaf.style.transform.replace('scale(1)', 'scale(0)');
+            }
+        });
+    });
+
+    // Search inputs
+    const searchInputs = [
+        { input: document.getElementById('desktop-search'), wrapper: 'desktop-suggestions' },
+        { input: document.getElementById('mobile-search'), wrapper: 'mobile-suggestions' }
+    ];
+
+    searchInputs.forEach(obj => {
+        if (!obj.input) return;
+        obj.input.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            toggleBottomDecor(searchQuery.length > 0);
+            renderProducts();
+            showSuggestions(searchQuery, obj.wrapper);
+        });
+        obj.input.addEventListener('focus', () => {
+            toggleBottomDecor(true);
+            if (searchQuery.length > 0) showSuggestions(searchQuery, obj.wrapper);
+        });
+        obj.input.addEventListener('blur', () => {
+            // small delay so clicking a suggestion still works
+            setTimeout(() => toggleBottomDecor(searchQuery.length > 0), 150);
+        });
+    });
+
+    // Hide suggestions on outside click
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('#desktop-suggestions, #mobile-suggestions, #desktop-search, #mobile-search')) {
+            document.getElementById('desktop-suggestions')?.classList.add('hidden');
+            document.getElementById('mobile-suggestions')?.classList.add('hidden');
+        }
+    });
+
+    // Keyboard nav (ignored while typing)
+    document.addEventListener('keydown', (e) => {
+        if (e.target.matches('input, textarea')) return;
+        if (e.key === 'ArrowLeft') setCategory('plant');
+        if (e.key === 'ArrowRight') setCategory('flower');
+    });
+
+});
+
+function toggleBottomDecor(hide) {
+    const decor = document.getElementById('bottom-decor');
+    if (!decor) return;
+    if (hide) {
+        decor.classList.add('opacity-0', 'pointer-events-none');
+    } else {
+        decor.classList.remove('opacity-0', 'pointer-events-none');
+    }
+}
+
+function matchesQuery(item, q) {
+    const s = q.toLowerCase();
+    return (item.name || '').toLowerCase().includes(s) ||
+        (item.name_en && item.name_en.toLowerCase().includes(s));
+}
+
+function showSuggestions(query, wrapperId) {
+    const wrapper = document.getElementById(wrapperId);
+    if (!wrapper) return;
+    if (!query.trim()) {
+        wrapper.innerHTML = '';
+        wrapper.classList.add('hidden');
+        return;
+    }
+
+    const matches = allProducts().filter(item => matchesQuery(item, query)).slice(0, 5);
+
+    if (matches.length === 0) {
+        wrapper.innerHTML = `<div class="p-4 text-sm text-gray-500 text-center">${TRANSLATIONS[language].noData}</div>`;
+    } else {
+        wrapper.innerHTML = matches.map(item => `
+            <div onclick="openProductModal(${Number(item.id)}); document.getElementById('${wrapperId}').classList.add('hidden');" class="p-3 hover:bg-gray-50 dark:hover:bg-[#3E4E4A] cursor-pointer flex items-center gap-4 border-b border-gray-100 dark:border-gray-700 last:border-0 transition-colors">
+                <img src="${escapeHtml(item.image)}" alt="" class="w-12 h-12 rounded-lg object-cover flex-shrink-0">
+                <div>
+                    <div class="text-sm font-bold text-[#2D4F1E] dark:text-[#EAE8E2]">${escapeHtml(itemName(item))}</div>
+                    <div class="text-xs text-[#E76F51] font-bold mt-0.5">${formatPrice(item.price)}</div>
+                </div>
+            </div>
+        `).join('');
+    }
+    wrapper.classList.remove('hidden');
+}
+
+function focusSearch() {
+    document.getElementById('mobile-search').focus();
+}
+
+// Draggable chat
+
+
+// --- CART LOGIC ---
+function saveCart() {
+    try {
+        localStorage.setItem('tano_cart', JSON.stringify(cart));
+    } catch (e) {
+        console.error("Could not save cart", e);
+    }
+}
+
+// Resolve cart rows against live product data and apply the "buy 50 get 1" promo.
+function calcCart() {
+    const lines = cart
+        .map(c => ({ product: findProduct(c.id), qty: c.qty }))
+        .filter(l => l.product);
+
+    const subtotal = lines.reduce((sum, l) => sum + Number(l.product.price) * l.qty, 0);
+    const totalQty = lines.reduce((sum, l) => sum + l.qty, 0);
+    const freeCount = Math.floor(totalQty / PROMO_EVERY);
+
+    let discount = 0;
+    if (freeCount > 0) {
+        const unitPrices = [];
+        lines.forEach(l => { for (let i = 0; i < l.qty; i++) unitPrices.push(Number(l.product.price)); });
+        unitPrices.sort((a, b) => a - b);
+        discount = unitPrices.slice(0, freeCount).reduce((a, b) => a + b, 0);
+    }
+
+    return { lines, subtotal, discount, freeCount, total: subtotal - discount };
+}
+
+function addToCart() {
+    if (!selectedItem) return;
+
+    const existing = cart.find(item => item.id === selectedItem.id);
+    if (existing) {
+        existing.qty += orderQuantity;
+    } else {
+        cart.push({ id: selectedItem.id, qty: orderQuantity });
+    }
+
+    saveCart();
+    updateCartBadge();
+    closeModal('product-modal');
+
+    const cartBtn = document.getElementById('cart-btn');
+    if (cartBtn) {
+        cartBtn.classList.add('scale-125');
+        setTimeout(() => cartBtn.classList.remove('scale-125'), 200);
+    }
+}
+
+function updateCartBadge() {
+    const badge = document.getElementById('cart-badge');
+    const count = cart.reduce((acc, item) => acc + item.qty, 0);
+    if (badge) {
+        badge.innerText = count;
+        badge.classList.toggle('opacity-0', count === 0);
+    }
+}
+
+function openCart() {
+    renderCartItems();
+    openModal('cart-modal');
+}
+
+function setCheckoutEnabled(enabled) {
+    const btn = document.getElementById('checkout-btn');
+    if (!btn) return;
+    btn.disabled = !enabled;
+    btn.classList.toggle('opacity-50', !enabled);
+    btn.classList.toggle('cursor-not-allowed', !enabled);
+}
+
+function renderCartItems() {
+    const container = document.getElementById('cart-items');
+    const t = TRANSLATIONS[language];
+    const discountRow = document.getElementById('cart-discount-row');
+    const { lines, discount, total } = calcCart();
+
+    if (lines.length === 0) {
+        container.innerHTML = `<div class="text-center opacity-50 py-10">${t.cartEmpty}</div>`;
+        setText('cart-total', '$0.00');
+        discountRow?.classList.add('hidden');
+        setCheckoutEnabled(false);
+        return;
+    }
+
+    setCheckoutEnabled(true);
+
+    container.innerHTML = lines.map(l => {
+        const p = l.product;
+        const itemTotal = Number(p.price) * l.qty;
+        return `
+        <div class="flex gap-4 items-center bg-gray-50 dark:bg-[#1C2321] p-3 rounded-xl">
+            <img src="${escapeHtml(p.image)}" alt="" class="w-16 h-16 rounded-lg object-cover">
+            <div class="flex-1">
+                <h4 class="font-bold text-sm">${escapeHtml(itemName(p))}</h4>
+                <p class="text-xs text-gray-500">${formatPrice(p.price)} x ${l.qty}</p>
+            </div>
+            <div class="text-right">
+                <p class="font-bold text-green-600">${formatPrice(itemTotal)}</p>
+                <button aria-label="${t.remove}" onclick="removeFromCart(${Number(p.id)})" class="text-red-400 text-xs hover:text-red-600 font-bold mt-1">${t.remove}</button>
+            </div>
+        </div>`;
+    }).join('');
+
+    if (discount > 0) {
+        discountRow?.classList.remove('hidden');
+        setText('cart-discount-label', t.promoDiscount);
+        setText('cart-discount', `-${formatPrice(discount)}`);
+    } else {
+        discountRow?.classList.add('hidden');
+    }
+
+    setText('cart-total', formatPrice(total));
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    saveCart();
+    renderCartItems();
+    updateCartBadge();
+}
+
+function setDeliveryMode(mode) {
+    deliveryMode = mode;
+    const btnPickup = document.getElementById('btn-pickup');
+    const btnDelivery = document.getElementById('btn-delivery');
+    const fields = document.getElementById('delivery-fields');
+
+    const active = "flex-1 py-2 text-sm font-bold rounded-lg bg-white shadow text-[#52796F] dark:bg-[#52796F] dark:text-white transition-all";
+    const idle = "flex-1 py-2 text-sm font-bold rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-all";
+
+    if (mode === 'pickup') {
+        btnPickup.className = active;
+        btnDelivery.className = idle;
+        fields.classList.add('hidden');
+    } else {
+        btnDelivery.className = active;
+        btnPickup.className = idle;
+        fields.classList.remove('hidden');
+    }
+}
+
+async function checkoutCart() {
+    const { lines, total } = calcCart();
+    if (lines.length === 0) return;
+
+    if (deliveryMode === 'delivery') {
+        const phoneVal = document.getElementById('del-phone').value.trim();
+        const addressVal = document.getElementById('del-address').value.trim();
+        if (!phoneVal || !addressVal) {
+            alert(TRANSLATIONS[language].chatNeedPhone);
+            return;
+        }
+    }
+
+    setText('payment-total', formatPrice(total));
+    const qrImg = document.getElementById('qr-code-img');
+    // Placeholder QR only: this is a demo, not a real banking integration
+    if (qrImg) qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=demo_payment_checkout&color=000000`;
+
+    closeModal('cart-modal');
+    openModal('payment-modal');
+}
+
+// --- SORTING LOGIC ---
+// Sorting works on a copy, so the original order (and Plant of the Day) never changes.
+function getSortedData() {
+    const data = [...(activeCategory === 'plant' ? PLANTS_DATA : FLOWERS_DATA)];
+    if (sortMode === 'price-asc') data.sort((a, b) => a.price - b.price);
+    if (sortMode === 'price-desc') data.sort((a, b) => b.price - a.price);
+    return data;
+}
+
+function sortProducts(criteria) {
+    sortMode = criteria;
+    renderProducts();
+}
+
+function setCategory(cat) {
+    activeCategory = cat;
+
+    const btnPlant = document.getElementById('btn-plant');
+    const btnFlower = document.getElementById('btn-flower');
+
+    if (cat === 'plant') {
+        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white`;
+        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400`;
+    } else {
+        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#E76F51] shadow-sm transform scale-100 dark:bg-[#E76F51] dark:text-white`;
+        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#354F52] dark:text-gray-400`;
+    }
+
+    renderProducts();
+}
+
+async function retryLoadProducts() {
+    await loadProductsFromApi();
+    renderPlantOfTheDay();
+    renderProducts();
+    renderCartItems();
+    updateCartBadge();
+}
+
+function renderProducts() {
+    const container = document.getElementById('product-grid');
+    if (!container) return;
+    const t = TRANSLATIONS[language];
+
+    if (productsLoadFailed) {
+        container.innerHTML = `<div class="col-span-full text-center py-32 flex flex-col items-center">
+            <i data-lucide="wifi-off" class="w-16 h-16 text-gray-300 mb-6"></i>
+            <p class="text-xl text-gray-400 font-bold mb-6">${t.loadFailed}</p>
+            <button onclick="retryLoadProducts()" class="px-6 py-3 rounded-xl bg-[#52796F] text-white font-bold hover:bg-[#354F52] transition-colors">${t.retry}</button>
+        </div>`;
+        lucide.createIcons();
+        return;
+    }
+
+    const filtered = getSortedData().filter(item => matchesQuery(item, searchQuery));
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-32 opacity-50 flex flex-col items-center"><i data-lucide="leaf" class="w-16 h-16 text-gray-300 mb-6"></i><p class="text-2xl text-gray-400 font-bold">${t.noData}</p></div>`;
+        lucide.createIcons();
+        return;
+    }
+
+    container.innerHTML = filtered.map((item, index) => {
+        const displayName = escapeHtml(itemName(item));
+        return `
+        <div onclick="openProductModal(${Number(item.id)})" class="group relative rounded-[2.5rem] overflow-hidden shadow-sm transition-all duration-700 cursor-pointer transform hover:-translate-y-3 hover-blur-bg border flex flex-col h-full animate-fadeInUp bg-white border-transparent hover:shadow-lg dark:bg-[#2D3A37] dark:border-[#3E4E4A] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" style="animation-delay: ${index * 150}ms">
+            <div class="relative aspect-[3/4] overflow-hidden">
+                <img src="${escapeHtml(item.image)}" alt="${displayName}" loading="lazy" class="bg-image w-full h-full object-cover transition-transform duration-[1.5s] ease-out scale-105 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 water-droplet pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-0 group-hover:translate-y-4">
+                     <i data-lucide="droplets" class="text-blue-200 drop-shadow-xl opacity-90 w-14 h-14"></i>
+                </div>
+                <div class="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-[#354F52] font-bold shadow-lg text-sm tracking-wide border border-white/50">${formatPrice(item.price)}</div>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-24">
+                <h3 class="text-2xl font-bold text-white mb-2 drop-shadow-md leading-snug">${displayName}</h3>
+                <div class="h-0 group-hover:h-auto overflow-hidden transition-all duration-700">
+                    <p class="text-[#84A98C] text-sm mt-2 font-medium flex items-center gap-2 uppercase tracking-wider">${t.clickDetails} <i data-lucide="arrow-right" class="w-4 h-4"></i></p>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+
+    lucide.createIcons();
+}
+
+function renderPlantOfTheDay() {
+    const plant = PLANTS_DATA[0]; // unsorted source list, so this stays stable
+    const container = document.getElementById('plant-of-day-container');
+    if (!container || !plant) return;
+    const t = TRANSLATIONS[language];
+    const displayName = escapeHtml(itemName(plant));
+
+    container.innerHTML = `
+        <div class="absolute top-0 right-0 px-5 py-2.5 bg-[#E76F51] text-white font-bold text-xs rounded-bl-2xl shadow-md z-10 tracking-widest uppercase">${t.specialBadge}</div>
+        <img src="${escapeHtml(plant.image)}" alt="${displayName}" class="w-full h-56 object-cover rounded-2xl mb-6 group-hover:scale-105 transition-transform duration-1000 ease-out">
+        <h3 class="font-bold text-2xl mb-2 text-[#2D4F1E] dark:text-[#84A98C]">${displayName}</h3>
+        <p class="text-sm mb-6 text-gray-500 dark:text-gray-400">${t.plantOfTheDay}</p>
+        <button aria-label="View Plant of the day" onclick="openProductModal(${Number(plant.id)})" class="w-full py-3.5 rounded-xl bg-[#354F52] text-white font-bold hover:bg-[#2F3E46] transition-colors text-sm shadow-lg tracking-wide">${t.clickDetails}</button>
+    `;
+}
+
+function openProductModal(id) {
+    selectedItem = findProduct(id);
+    if (!selectedItem) return;
+
+    orderQuantity = 1;
+
+    const modalContent = document.getElementById('modal-content');
+    const t = TRANSLATIONS[language];
+    const displayName = escapeHtml(itemName(selectedItem));
+    const displayDesc = escapeHtml(itemDesc(selectedItem));
+
+    modalContent.innerHTML = `
+        <!-- Image Side -->
+        <div class="w-full md:w-1/2 h-72 md:h-auto relative flex-shrink-0">
+            <img src="${escapeHtml(selectedItem.image)}" alt="${displayName}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:hidden"></div>
+            <div class="absolute top-6 left-6 flex gap-3">
+                <button aria-label="Close Modal" onclick="closeModal('product-modal')" class="bg-white/20 hover:bg-white/40 text-white p-3 rounded-full backdrop-blur-md transition-colors"><i data-lucide="x" class="w-6 h-6"></i></button>
+            </div>
+            <button aria-label="Share" onclick="shareProduct()" class="absolute top-6 right-6 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full backdrop-blur-md transition-colors"><i data-lucide="share-2" class="w-6 h-6"></i></button>
+        </div>
+        <!-- Content Side -->
+        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
+            <div class="flex justify-between items-start mb-8">
+                <div>
+                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-3 tracking-wide uppercase ${selectedItem.category === 'plant' ? 'bg-[#52796F]/10 text-[#52796F] dark:bg-[#84A98C]/20 dark:text-[#84A98C]' : 'bg-[#E76F51]/10 text-[#E76F51] dark:bg-[#E76F51]/20 dark:text-[#E76F51]'}">
+                        ${selectedItem.category === 'plant' ? t.plants : t.flowers}
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-bold leading-tight text-[#2D4F1E] dark:text-[#84A98C]">${displayName}</h2>
+                </div>
+                <button aria-label="Close Product" onclick="closeModal('product-modal')" class="hidden md:block opacity-40 hover:opacity-100 transition-opacity"><i data-lucide="x" class="w-8 h-8"></i></button>
+            </div>
+
+            <div class="mb-8 flex-grow">
+                <p class="text-lg leading-relaxed opacity-80 font-light text-[#4A4E4D] dark:text-[#EAE8E2]">${displayDesc}</p>
+
+                <!-- Quantity -->
+                <div class="mt-8">
+                   <div class="flex items-center justify-between p-5 rounded-2xl bg-[#F9F7F2] dark:bg-[#1C2321]">
+                      <span class="font-bold text-lg text-[#2D4F1E] dark:text-[#EAE8E2]">${t.quantity}</span>
+                      <div class="flex items-center gap-6 px-4 py-2 rounded-xl border bg-white border-gray-200 dark:bg-[#0A2F2D] dark:border-[#2C5E55]">
+                        <button aria-label="Decrease Quantity" onclick="updateQty(-1)" class="p-2 hover:text-[#E76F51] transition-colors"><i data-lucide="minus" class="w-5 h-5"></i></button>
+                        <span id="qty-display" class="font-bold text-2xl w-8 text-center text-[#2D4F1E] dark:text-white">1</span>
+                        <button aria-label="Increase Quantity" onclick="updateQty(1)" class="p-2 hover:text-[#E76F51] transition-colors"><i data-lucide="plus" class="w-5 h-5"></i></button>
+                      </div>
+                   </div>
+                </div>
+            </div>
+
+            <!-- Checkout Bar -->
+            <div class="mt-auto pt-6 border-t sticky bottom-0 z-20 border-gray-100 bg-white dark:border-[#1A3C34] dark:bg-[#2D3A37]">
+                <div class="flex items-center justify-between mb-6">
+                  <div class="flex flex-col">
+                    <span class="opacity-60 text-sm font-medium uppercase tracking-wider text-[#4A4E4D] dark:text-[#EAE8E2]">${t.total}</span>
+                    <span class="text-xs opacity-40 text-[#4A4E4D] dark:text-[#EAE8E2]">(${formatPrice(selectedItem.price)} x <span id="qty-calc">1</span>)</span>
+                  </div>
+                  <span id="total-price" class="text-4xl md:text-5xl font-bold text-[#2D4F1E] dark:text-[#84A98C]">${formatPrice(selectedItem.price)}</span>
+                </div>
+                <button onclick="addToCart()" class="w-full bg-[#52796F] hover:bg-[#354F52] dark:bg-[#84A98C] dark:hover:bg-[#52796F] text-white py-5 rounded-2xl font-bold text-xl shadow-xl shadow-green-900/20 transition-all active:scale-95 flex items-center justify-center gap-3">
+                  <i data-lucide="shopping-cart" class="w-6 h-6"></i> ${t.addToCart}
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.getElementById('product-modal').classList.remove('hidden');
+    lucide.createIcons();
+}
+
+function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+    if (id === 'payment-modal') {
+        paymentStatus = 'pending';
+        document.getElementById('payment-success-overlay').classList.add('hidden');
+        document.getElementById('qr-code-img').classList.remove('opacity-30');
+        document.getElementById('payment-checking').classList.add('hidden');
+        const btn = document.getElementById('btn-send-telegram');
+        btn.classList.add('bg-white', 'text-[#005F7F]', 'hover:bg-gray-100');
+        btn.classList.remove('bg-green-600', 'text-white', 'hover:bg-green-700');
+        btn.querySelector('span').innerText = TRANSLATIONS[language].sendOrder;
+    }
+}
+
+function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function updateQty(delta) {
+    if (orderQuantity + delta < 1) return;
+    orderQuantity += delta;
+    setText('qty-display', orderQuantity);
+    setText('qty-calc', orderQuantity);
+    setText('total-price', formatPrice(selectedItem.price * orderQuantity));
+}
+
+function simulatePayment() {
+    paymentStatus = 'checking';
+    document.getElementById('qr-code-img').classList.add('opacity-30');
+    document.getElementById('payment-checking').classList.remove('hidden');
+
+    setTimeout(() => {
+        paymentStatus = 'success';
+        document.getElementById('payment-checking').classList.add('hidden');
+        document.getElementById('payment-success-overlay').classList.remove('hidden');
+
+        const btn = document.getElementById('btn-send-telegram');
+        btn.classList.remove('bg-white', 'text-[#005F7F]', 'hover:bg-gray-100');
+        btn.classList.add('bg-green-600', 'text-white', 'hover:bg-green-700');
+        btn.querySelector('span').innerText = TRANSLATIONS[language].sendPaidOrder;
+    }, 1500);
+}
+
+async function sendOrder() {
+    const phoneVal = document.getElementById('del-phone').value.trim();
+    const addressVal = document.getElementById('del-address').value.trim();
+    const { lines, subtotal, discount, total } = calcCart();
+    if (lines.length === 0) return;
+
+    let message = `🛒 **ORDER #${Math.floor(Math.random() * 1000)}**\n`;
+    message += `------------------------\n`;
+
+    lines.forEach(l => {
+        const lineTotal = Number(l.product.price) * l.qty;
+        message += `🌿 **${itemName(l.product)}** x ${l.qty} = ${formatPrice(lineTotal)}\n`;
+    });
+
+    message += `------------------------\n`;
+    if (discount > 0) {
+        message += `🧾 Subtotal: ${formatPrice(subtotal)}\n`;
+        message += `🎁 Promo (Buy 50 Get 1 Free): -${formatPrice(discount)}\n`;
+    }
+    message += `💰 **TOTAL:** ${formatPrice(total)}\n`;
+
+    const paidText = paymentStatus === 'success' ? '✅ PAID (DEMO KHQR)' : '❌ UNPAID';
+    message += `💳 **Status:** ${paidText}\n`;
+    message += `------------------------\n`;
+
+    if (deliveryMode === 'delivery') {
+        message += `📍 **Delivery Info (Delivery):**\n`;
+        message += `📞 Phone: ${phoneVal || 'N/A'}\n`;
+        message += `🏠 Address: ${addressVal || 'N/A'}\n`;
+    } else {
+        message += `📍 **Delivery Info:** Pick up at farm\n`;
+    }
+    message += `------------------------\n`;
+    message += `From Website`;
+
+    // Save the order to the backend (shows in the admin Orders tab).
+    // Only ids and quantities are sent. The backend must look up prices itself and
+    // decide payment status itself; never trust the browser for either.
+    let saved = !USE_API;
+    if (USE_API) try {
+        const res = await fetch(`${API_BASE}/api/orders`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                items: lines.map(l => ({ product_id: l.product.id, quantity: l.qty })),
+                customer_phone: phoneVal,
+                customer_address: addressVal,
+                delivery_mode: deliveryMode,
+            }),
+        });
+        saved = res.ok;
+        if (!res.ok) console.error('Backend rejected order:', res.status);
+    } catch (err) {
+        console.error('Could not save order to backend:', err);
+    }
+
+    if (saved) {
+        cart = [];
+        saveCart();
+        updateCartBadge();
+    } else {
+        // Keep the cart so nothing is lost; the Telegram message is the fallback
+        alert(TRANSLATIONS[language].orderNotSaved);
+    }
+
+    const url = `https://t.me/koyches?text=${encodeURIComponent(message.trim())}`;
+    window.open(url, '_blank');
+    closeModal('payment-modal');
+}
+
+function shareProduct() {
+    if (!selectedItem) return;
+    const name = itemName(selectedItem);
+    const text = `Check out ${name} at Tano Garden! Price: ${formatPrice(selectedItem.price)}`;
+    if (navigator.share) {
+        navigator.share({ title: name, text: text, url: window.location.href }).catch(() => {});
+    } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(window.location.href).then(() => alert(TRANSLATIONS[language].linkCopied));
+    }
+}
+
+function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    document.documentElement.classList.toggle('dark');
+    const icon = document.getElementById('theme-icon');
+    if (isDarkMode) {
+        icon.setAttribute('data-lucide', 'sun');
+        icon.classList.remove('text-[#2F3E46]');
+        icon.classList.add('text-[#F4A261]');
+    } else {
+        icon.setAttribute('data-lucide', 'moon');
+        icon.classList.remove('text-[#F4A261]');
+        icon.classList.add('text-[#2F3E46]');
+    }
+    lucide.createIcons();
+    // The product modal already uses dark: classes, so it must NOT be re-rendered here
+    // (re-rendering would reset the quantity and the care tip).
+}
+
+function toggleLanguage() {
+    language = language === 'kh' ? 'en' : 'kh';
+
+    if (chatMessages.length === 1 && (chatMessages[0].text === TRANSLATIONS['kh'].chatWelcome || chatMessages[0].text === TRANSLATIONS['en'].chatWelcome)) {
+        chatMessages[0].text = TRANSLATIONS[language].chatWelcome;
+    }
+
+    updateLanguageUI();
+    renderPlantOfTheDay();
+    renderProducts();
+    if (!document.getElementById('cart-modal').classList.contains('hidden')) renderCartItems();
+}
+
+function updateLanguageUI() {
+    const t = TRANSLATIONS[language];
+    document.documentElement.lang = language === 'kh' ? 'km' : 'en';
+    setText('nav-title', t.title);
+
+    const desktopSearch = document.getElementById('desktop-search');
+    if (desktopSearch) desktopSearch.placeholder = t.searchPlaceholder;
+    const mobileSearch = document.getElementById('mobile-search');
+    if (mobileSearch) mobileSearch.placeholder = t.searchPlaceholder;
+
+    setText('hero-badge', t.natureBadge);
+    setText('hero-title', t.heroTitle);
+    setText('hero-subtitle', t.heroSubtitle);
+    setText('promo-subtitle', t.promoSubtitle);
+    setText('promo-title', t.promoTitle);
+    setText('tool-doctor', t.plantDoctor);
+    setText('tool-doctor-desc', t.plantDoctorDesc);
+    setText('cat-plant-text', t.plants);
+    setText('cat-flower-text', t.flowers);
+    setText('faq-title', t.faqTitle);
+    setText('faq-1-q', t.faq1Q);
+    setText('faq-1-a', t.faq1A);
+    setText('faq-2-q', t.faq2Q);
+    setText('faq-2-a', t.faq2A);
+    setText('footer-thank', t.thankYou);
+    setText('footer-msg', `"${t.thankYouMessage}"`);
+    setText('footer-contact', t.contactUs);
+    setText('chat-title', t.chatTitle);
+    setText('chat-status', t.chatOnline);
+    setText('sort-label', t.sortLabel);
+    setText('sort-asc', t.sortAsc);
+    setText('sort-desc', t.sortDesc);
+    setText('cart-title', t.cartTitle);
+    setText('cart-empty-text', t.cartEmpty);
+    setText('cart-total-label', t.total);
+    setText('btn-checkout', t.checkout);
+
+    const btnPickup = document.getElementById('btn-pickup');
+    if (btnPickup) btnPickup.innerText = t.pickup;
+    const btnDelivery = document.getElementById('btn-delivery');
+    if (btnDelivery) btnDelivery.innerText = t.delivery;
+
+    const dp = document.getElementById('del-phone');
+    if (dp) dp.placeholder = t.phonePlaceholder;
+    const da = document.getElementById('del-address');
+    if (da) da.placeholder = t.addressPlaceholder;
+    setText('delivery-info-title', t.deliveryInfo);
+
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) chatInput.placeholder = t.chatPlaceholder;
+
+    // Payment Modal
+    setText('payment-scan-text', t.scanPay);
+    setText('btn-open-app', t.openApp);
+    setText('payment-success-text', t.paymentSuccess);
+    setText('eco-text', t.ecoImpact);
+    setText('label-total', t.total);
+    setText('merchant-label', t.merchantLabel);
+    setText('detecting-text', t.detecting);
+    setText('btn-sim-pay', t.simulatePay);
+
+    // Promo Modal
+    setText('promo-modal-title', t.promoModalTitle);
+    setText('promo-modal-offer', t.promoModalOffer);
+    setText('promo-desc', t.promoDesc);
+    setText('promo-cond-title', t.promoCondTitle);
+    setText('cond-1', t.cond1);
+    setText('cond-2', t.cond2);
+    setText('cond-3', t.cond3);
+    setText('btn-close-promo', t.btnClose);
+
+    // Footer Labels
+    setText('chat-telegram-label', t.chatTelegramLabel);
+    setText('facebook-label', t.facebookLabel);
+
+    const btnSendTelegram = document.querySelector('#btn-send-telegram span');
+    if (btnSendTelegram) {
+        btnSendTelegram.innerText = paymentStatus !== 'success' ? t.sendOrder : t.sendPaidOrder;
+    }
+}
+
+// Chatbot
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
