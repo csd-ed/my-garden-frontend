@@ -159,14 +159,14 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-transparent py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 bg-transparent py-4 sm:py-6">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
             <!-- Logo -->
             <div class="logo-group flex items-center gap-3 group cursor-pointer select-none transition-all duration-500" onclick="window.scrollTo(0,0)">
-                <div class="logo-icon w-12 h-12 bg-[#52796F] dark:bg-[#84A98C] rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-500 flex-shrink-0">
+                <div class="logo-icon w-10 h-10 sm:w-12 sm:h-12 bg-[#52796F] dark:bg-[#84A98C] rounded-full flex items-center justify-center text-white shadow-lg transition-transform duration-500 flex-shrink-0">
                     <i data-lucide="leaf" class="w-6 h-6"></i>
                 </div>
-                <h1 id="nav-title" class="logo-text text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 whitespace-nowrap text-[#52796F] dark:text-[#84A98C]">
+                <h1 id="nav-title" class="logo-text text-lg sm:text-xl md:text-3xl font-bold tracking-tight transition-all duration-500 whitespace-nowrap text-[#52796F] dark:text-[#84A98C]">
                     ចម្ការតាណូ
                 </h1>
             </div>
@@ -174,23 +174,23 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
             <!-- Search (Desktop) -->
             <div class="hidden lg:flex items-center rounded-full px-5 py-3 border shadow-sm focus-within:shadow-md focus-within:border-[#84A98C] transition-all duration-500 w-80 bg-[#F2F0EB] border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white relative">
                 <i data-lucide="search" class="text-[#84A98C] w-5 h-5 flex-shrink-0"></i>
-                <input type="text" id="desktop-search" autocomplete="off" placeholder="ស្វែងរក..." aria-label="Search" class="bg-transparent border-none outline-none ml-3 w-full text-sm font-medium placeholder-gray-400">
+                <input type="text" id="desktop-search" enterkeyhint="search" autocapitalize="off" autocomplete="off" placeholder="ស្វែងរក..." aria-label="Search" class="bg-transparent border-none outline-none ml-3 w-full text-sm font-medium placeholder-gray-400">
                 <!-- Suggestions Dropdown -->
                 <div id="desktop-suggestions" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-[#2D3A37] border border-gray-100 dark:border-[#3E4E4A] rounded-2xl shadow-xl z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
             </div>
 
             <!-- Controls -->
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-0.5 sm:gap-3">
                 <!-- Cart Button -->
-                <button id="cart-btn" onclick="openCart()" aria-label="Open Cart" class="relative p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all group">
+                <button id="cart-btn" onclick="openCart()" aria-label="Open Cart" class="relative p-2 sm:p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-all group">
                     <i data-lucide="shopping-cart" class="w-5 h-5 text-[#52796F] dark:text-[#84A98C]"></i>
                     <span id="cart-badge" class="absolute top-1 right-1 w-4 h-4 bg-[#E76F51] text-white text-[10px] font-bold rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
                 </button>
 
-                <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Toggle Theme">
+                <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2 sm:p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Toggle Theme">
                     <i id="theme-icon" data-lucide="moon" class="w-5 h-5 text-[#2F3E46]"></i>
                 </button>
-                <button onclick="toggleLanguage()" aria-label="Change Language" class="p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Change Language">
+                <button onclick="toggleLanguage()" aria-label="Change Language" class="p-2 sm:p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors" title="Change Language">
                     <i data-lucide="globe" class="w-5 h-5 text-[#52796F] dark:text-[#84A98C]"></i>
                 </button>
 
@@ -200,7 +200,7 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
                     </a>
                 </div>
 
-                <button aria-label="Mobile Search" class="lg:hidden p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10" onclick="focusSearch()">
+                <button aria-label="Mobile Search" class="lg:hidden p-2 sm:p-2.5 rounded-full hover:bg-black/5 dark:hover:bg-white/10" onclick="focusSearch()">
                     <i data-lucide="search" class="w-6 h-6 text-[#52796F] dark:text-[#84A98C]"></i>
                 </button>
             </div>
@@ -208,30 +208,32 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative pt-40 pb-16 px-4 overflow-hidden">
+    <header class="relative pt-28 sm:pt-40 pb-12 sm:pb-16 px-4">
         <!-- Background Blobs (Parallax Targets) -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#FAF9F6] to-[#EAE8E2] dark:from-[#1C2321] dark:to-[#2D3A37]"></div>
         <div class="absolute top-20 right-0 w-96 h-96 bg-[#84A98C] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 animate-blob parallax-blob" data-speed="-0.02"></div>
         <div class="absolute bottom-20 left-0 w-96 h-96 bg-[#F4A261] rounded-full mix-blend-multiply filter blur-[120px] opacity-15 animate-blob animation-delay-2000 parallax-blob" data-speed="0.02"></div>
+        </div>
 
-        <div class="max-w-7xl mx-auto relative z-10 text-center px-4">
-            <span class="liquid-glass inline-block py-3 px-8 rounded-full text-[#354F52] text-sm font-bold mb-10 animate-fadeInUp cursor-default shadow-lg hover:scale-105 transition-transform duration-700">
+        <div class="max-w-7xl mx-auto relative z-[45] text-center px-4">
+            <span class="liquid-glass inline-block py-2 px-5 sm:py-3 sm:px-8 rounded-full text-[#354F52] text-sm font-bold mb-6 sm:mb-10 animate-fadeInUp cursor-default shadow-lg hover:scale-105 transition-transform duration-700">
                 <span class="relative z-10 flex items-center gap-2">
                     <i data-lucide="sparkles" class="w-4 h-4 text-[#E76F51]"></i> <span id="hero-badge">ធម្មជាតិពិតៗ ១០០%</span>
                 </span>
             </span>
 
-            <h2 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-[#52796F] dark:text-[#84A98C]">
+            <h2 id="hero-title" class="text-4xl sm:text-5xl md:text-7xl font-bold mb-5 sm:mb-8 leading-tight tracking-tight text-[#52796F] dark:text-[#84A98C]">
                 នាំយកធម្មជាតិ ចូលក្នុងគេហដ្ឋានរបស់អ្នក
             </h2>
 
-            <p id="hero-subtitle" class="text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed font-light text-gray-500 dark:text-gray-400">
+            <p id="hero-subtitle" class="text-base sm:text-lg md:text-xl mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed font-light text-gray-500 dark:text-gray-400">
                 ផ្តល់ជូននូវរុក្ខជាតិ និងផ្កាស្រស់ៗពីចម្ការផ្ទាល់ ជាមួយនឹងតម្លៃសមរម្យ និងសេវាកម្មដឹកជញ្ជូនរហ័សទាន់ចិត្ត។
             </p>
 
             <!-- Promo Card -->
             <div onclick="openModal('promo-modal')" class="transform hover:scale-[1.02] transition-transform duration-700 cursor-pointer inline-block w-full max-w-md mx-auto">
-                <div class="bg-gradient-to-r from-[#52796F] to-[#84A98C] text-white p-8 rounded-[2rem] shadow-2xl shadow-[#52796F]/20 flex items-center justify-between gap-6 border border-white/20 relative overflow-hidden dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+                <div class="bg-gradient-to-r from-[#52796F] to-[#84A98C] text-white p-5 sm:p-8 rounded-[2rem] shadow-2xl shadow-[#52796F]/20 flex items-center justify-between gap-4 sm:gap-6 border border-white/20 relative overflow-hidden dark:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
                     <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#F4A261] rounded-full blur-3xl opacity-30"></div>
                     <div class="flex items-center gap-5 relative z-10">
                         <div class="bg-white/20 p-4 rounded-full flex-shrink-0 backdrop-blur-md">
@@ -239,7 +241,7 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
                         </div>
                         <div class="text-left">
                             <p id="promo-subtitle" class="text-xs font-bold text-white/80 uppercase tracking-widest mb-1">ការផ្តល់ជូនពិសេស</p>
-                            <h3 id="promo-title" class="text-3xl font-bold">ទិញ ៥០ ថែម ១</h3>
+                            <h3 id="promo-title" class="text-2xl sm:text-3xl font-bold">ទិញ ៥០ ថែម ១</h3>
                         </div>
                     </div>
                     <div class="bg-white/20 p-3 rounded-full relative z-10 transition-transform group-hover:translate-x-1">
@@ -249,10 +251,10 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
             </div>
 
             <!-- Mobile Search -->
-            <div class="mt-12 lg:hidden max-w-md mx-auto relative">
+            <div class="mt-8 sm:mt-12 lg:hidden max-w-md mx-auto relative">
                 <div class="flex items-center rounded-2xl px-5 py-4 shadow-md border focus-within:border-[#84A98C] transition-all bg-[#F2F0EB] border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white">
                     <i data-lucide="search" class="text-[#84A98C] w-6 h-6 flex-shrink-0"></i>
-                    <input id="mobile-search" type="text" autocomplete="off" aria-label="Search mobile" placeholder="ស្វែងរក..." class="bg-transparent border-none outline-none ml-3 w-full text-lg placeholder-gray-400">
+                    <input id="mobile-search" type="text" enterkeyhint="search" autocapitalize="off" autocomplete="off" aria-label="Search mobile" placeholder="ស្វែងរក..." class="bg-transparent border-none outline-none ml-3 w-full text-lg placeholder-gray-400">
                 </div>
                 <!-- Suggestions Dropdown -->
                 <div id="mobile-suggestions" class="hidden absolute top-full left-0 w-full mt-2 bg-white dark:bg-[#2D3A37] border border-gray-100 dark:border-[#3E4E4A] rounded-2xl shadow-xl z-50 overflow-hidden max-h-64 overflow-y-auto"></div>
@@ -261,14 +263,14 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     </header>
 
     <!-- Category Switcher -->
-    <div id="category-sticky" class="sticky top-24 z-40 backdrop-blur-xl py-6 border-b transition-all duration-700 border-[#EAE8E2] bg-[#FAF9F6]/80 dark:border-[#2D3A37] dark:bg-[#1C2321]/80">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div id="category-sticky" class="sticky top-14 sm:top-[4.5rem] z-40 backdrop-blur-xl py-3 sm:py-6 border-b transition-all duration-700 border-[#EAE8E2] bg-[#FAF9F6]/80 dark:border-[#2D3A37] dark:bg-[#1C2321]/80">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4">
             <!-- Switcher -->
             <div class="max-w-xs sm:max-w-md w-full flex p-1.5 rounded-full relative shadow-inner bg-[#EAE8E2] dark:bg-[#2F3E46]">
-                <button onclick="setCategory('plant')" id="btn-plant" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white">
+                <button onclick="setCategory('plant')" id="btn-plant" class="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white">
                     <i data-lucide="leaf" class="w-4.5 h-4.5"></i> <span id="cat-plant-text">រុក្ខជាតិ</span>
                 </button>
-                <button onclick="setCategory('flower')" id="btn-flower" class="flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400">
+                <button onclick="setCategory('flower')" id="btn-flower" class="flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400">
                     <i data-lucide="flower-2" class="w-4.5 h-4.5"></i> <span id="cat-flower-text">ផ្កា</span>
                 </button>
             </div>
@@ -276,21 +278,21 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
             <!-- Sorting & Filtering -->
             <div class="flex items-center gap-3 w-full md:w-auto overflow-x-auto">
                 <span id="sort-label" class="text-sm font-bold text-gray-400 whitespace-nowrap">តម្រៀបតាម:</span>
-                <button id="sort-asc" onclick="sortProducts('price-asc')" class="px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ទាប-ខ្ពស់</button>
-                <button id="sort-desc" onclick="sortProducts('price-desc')" class="px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ខ្ពស់-ទាប</button>
+                <button id="sort-asc" onclick="sortProducts('price-asc')" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ទាប-ខ្ពស់</button>
+                <button id="sort-desc" onclick="sortProducts('price-desc')" class="px-3 sm:px-4 py-2 rounded-xl text-sm font-bold bg-white dark:bg-[#2D3A37] border border-gray-200 dark:border-[#3E4E4A] hover:border-[#E76F51] transition-colors whitespace-nowrap">តម្លៃ ខ្ពស់-ទាប</button>
             </div>
         </div>
     </div>
 
     <!-- Product Grid -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-[60vh]">
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12">
+    <main id="products" class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-12 min-h-[60vh] scroll-mt-48">
+        <div id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-10">
             <!-- Products injected by JS -->
         </div>
     </main>
 
     <!-- FAQ -->
-    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mb-24">
+    <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 mb-16 sm:mb-24">
         <h2 id="faq-title" class="text-2xl font-bold mb-8 text-center text-[#52796F] dark:text-[#84A98C]">សំណួរដែលសួរញឹកញាប់ (FAQ)</h2>
         <div class="space-y-4">
             <div class="border border-gray-200 dark:border-[#3E4E4A] rounded-2xl overflow-hidden">
@@ -315,7 +317,7 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     <!-- Wrapper for hideable bottom elements -->
     <div id="bottom-decor" class="transition-opacity duration-300">
         <!-- Fixed Bottom Address -->
-        <div class="fixed bottom-6 left-0 right-0 z-40 pointer-events-none flex justify-center">
+        <div class="fixed bottom-3 sm:bottom-6 left-0 right-0 z-40 pointer-events-none flex justify-center">
             <div class="relative max-w-[95%] sm:max-w-sm md:max-w-3xl w-full mx-auto">
                 <!-- Growing Vine Animation -->
                 <div class="absolute bottom-[90%] left-0 w-full h-16 pointer-events-none z-50 overflow-visible">
@@ -359,7 +361,7 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     <!-- Product Detail Modal -->
     <div id="product-modal" class="hidden fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-xl transition-opacity" onclick="closeModal('product-modal')"></div>
-        <div class="bg-white text-[#4A4E4D] w-full md:max-w-5xl h-[95vh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col md:flex-row dark:bg-[#2D3A37] dark:text-[#EAE8E2] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+        <div class="bg-white text-[#4A4E4D] w-full md:max-w-5xl h-[95dvh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col md:flex-row dark:bg-[#2D3A37] dark:text-[#EAE8E2] dark:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
             <div id="modal-content" class="flex flex-col md:flex-row w-full h-full"></div>
         </div>
     </div>
@@ -367,19 +369,19 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     <!-- Cart Modal -->
     <div id="cart-modal" class="hidden fixed inset-0 z-[100] flex items-end md:items-center justify-center p-0 md:p-6">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity" onclick="closeModal('cart-modal')"></div>
-        <div class="bg-white text-[#4A4E4D] w-full md:max-w-lg h-[90vh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col dark:bg-[#2D3A37] dark:text-[#EAE8E2]">
+        <div class="bg-white text-[#4A4E4D] w-full md:max-w-lg h-[90dvh] md:h-auto md:max-h-[90vh] md:rounded-[2.5rem] rounded-t-[2.5rem] shadow-2xl overflow-hidden relative z-10 flex flex-col dark:bg-[#2D3A37] dark:text-[#EAE8E2]">
             <div class="p-6 border-b border-gray-100 dark:border-[#3E4E4A] flex justify-between items-center">
                 <h2 id="cart-title" class="text-2xl font-bold">កន្ត្រកទំនិញ (Cart)</h2>
                 <button onclick="closeModal('cart-modal')" aria-label="Close Cart" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-[#3E4E4A]"><i data-lucide="x" class="w-6 h-6"></i></button>
             </div>
 
-            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
                 <!-- Items injected here -->
                 <div class="text-center opacity-50 py-10" id="cart-empty-text">កន្ត្រកទំនិញនៅទំនេរ</div>
             </div>
 
             <!-- Delivery Info inside Cart -->
-            <div class="px-6 py-4 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50/50 dark:bg-[#1C2321]/50 space-y-3">
+            <div class="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50/50 dark:bg-[#1C2321]/50 space-y-3">
                 <div class="flex items-center gap-3 font-bold text-sm opacity-80 text-[#2D4F1E] dark:text-[#EAE8E2] mb-1">
                     <i data-lucide="truck" class="w-4 h-4"></i> <span id="delivery-info-title">ព័ត៌មានដឹកជញ្ជូន</span>
                 </div>
@@ -389,12 +391,12 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
                     <button id="btn-delivery" type="button" onclick="setDeliveryMode('delivery')" class="flex-1 py-2 text-sm font-bold rounded-lg text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-all">ដឹកជញ្ជូន</button>
                 </div>
                 <div id="delivery-fields" class="space-y-3 hidden">
-                    <input type="text" id="del-phone" placeholder="លេខទូរស័ព្ទ (Phone)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required>
-                    <textarea id="del-address" placeholder="ទីតាំង (Address)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] h-20 resize-none text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required></textarea>
+                    <input type="text" id="del-phone" placeholder="លេខទូរស័ព្ទ (Phone)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] text-base sm:text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required>
+                    <textarea id="del-address" placeholder="ទីតាំង (Address)" class="w-full px-4 py-3 rounded-xl border focus:outline-none focus:ring-2 focus:ring-[#84A98C] h-20 resize-none text-base sm:text-sm bg-white border-[#E0DCD3] text-[#4A4E4D] dark:bg-[#3E4E4A] dark:border-[#526660] dark:text-white" required></textarea>
                 </div>
             </div>
 
-            <div class="p-6 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50 dark:bg-[#1C2321]">
+            <div class="p-4 sm:p-6 border-t border-gray-100 dark:border-[#3E4E4A] bg-gray-50 dark:bg-[#1C2321]">
                 <!-- Promo discount row (shown by JS when applicable) -->
                 <div id="cart-discount-row" class="hidden flex justify-between items-center mb-3 text-sm font-bold text-[#E76F51]">
                     <span id="cart-discount-label">Promo</span>
@@ -483,7 +485,7 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     <!-- Promo Modal -->
     <div id="promo-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('promo-modal')"></div>
-        <div class="bg-white rounded-3xl p-8 max-w-md w-full relative z-10 shadow-2xl dark:bg-[#2D3A37] dark:text-white">
+        <div class="bg-white rounded-3xl p-5 sm:p-8 max-w-md w-full max-h-[90dvh] overflow-y-auto relative z-10 shadow-2xl dark:bg-[#2D3A37] dark:text-white">
             <button aria-label="Close Promotion" onclick="closeModal('promo-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-white"><i data-lucide="x" class="w-6 h-6"></i></button>
             <div class="text-center mb-6">
                 <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
@@ -510,20 +512,20 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     <!-- Profile Modal -->
     <div id="profile-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeModal('profile-modal')"></div>
-        <div class="bg-white rounded-[2.5rem] w-full max-w-lg relative z-10 shadow-2xl overflow-hidden dark:bg-[#2D3A37] dark:text-white transform transition-all flex flex-col max-h-[90vh]">
+        <div class="bg-white rounded-[2.5rem] w-full max-w-lg relative z-10 shadow-2xl overflow-hidden dark:bg-[#2D3A37] dark:text-white transform transition-all flex flex-col max-h-[90dvh]">
              <div class="overflow-y-auto flex-1">
                  <!-- Header / Cover -->
                  <div class="h-32 bg-gradient-to-r from-[#1C2321] to-[#52796F] relative">
                      <button aria-label="Close Profile" onclick="closeModal('profile-modal')" class="absolute top-4 right-4 bg-black/20 hover:bg-black/40 text-white p-2 rounded-full backdrop-blur-sm transition-colors z-20"><i data-lucide="x" class="w-5 h-5"></i></button>
                  </div>
 
-                 <div class="px-8 pb-8">
+                 <div class="px-5 sm:px-8 pb-8">
                      <!-- Profile Pic overlapping cover -->
                      <div class="-mt-16 mb-6 text-center relative z-10">
                          <div class="w-32 h-32 mx-auto rounded-full border-[6px] border-white dark:border-[#2D3A37] shadow-xl overflow-hidden bg-white mb-4">
                              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" class="w-full h-full object-cover" alt="Profile Picture">
                          </div>
-                         <h3 class="text-3xl font-bold text-gray-800 dark:text-white">CHHON SOVANDARA</h3>
+                         <h3 class="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-white">CHHON SOVANDARA</h3>
                          <div class="flex items-center justify-center gap-2 text-[#52796F] dark:text-[#84A98C] font-medium mt-1">
                             <i data-lucide="map-pin" class="w-4 h-4"></i> Phnom Penh, Cambodia
                          </div>
@@ -579,12 +581,12 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-[#2D3A37] to-[#1C2321] text-white pt-24 pb-32 rounded-t-[3rem] mt-24 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 relative z-10">
+    <footer class="bg-gradient-to-b from-[#2D3A37] to-[#1C2321] text-white pt-16 sm:pt-24 pb-32 rounded-t-[2rem] sm:rounded-t-[3rem] mt-16 sm:mt-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 md:gap-16 relative z-10">
             <div class="space-y-10">
-                <div class="p-10 rounded-[2.5rem] border-l-4 border-[#E76F51] relative overflow-hidden group hover:bg-white/5 transition-colors bg-[rgba(255,255,255,0.15)] backdrop-blur-[15px] border border-[rgba(255,255,255,0.2)] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
-                    <h2 id="footer-thank" class="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-[#E76F51]">សូមអរគុណ</h2>
-                    <p id="footer-msg" class="text-white/80 text-lg leading-relaxed font-light italic">"ពួកយើងមានកិត្តិយសណាស់ដែលលោកអ្នកបានជ្រើសរើស ចម្ការតាណូ។ រាល់ការជាវរបស់លោកអ្នក គឺជាកម្លាំងចិត្តដ៏ធំធេងសម្រាប់ពួកយើង។"</p>
+                <div class="p-6 sm:p-10 rounded-[2rem] sm:rounded-[2.5rem] border-l-4 border-[#E76F51] relative overflow-hidden group hover:bg-white/5 transition-colors bg-[rgba(255,255,255,0.15)] backdrop-blur-[15px] border border-[rgba(255,255,255,0.2)] shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+                    <h2 id="footer-thank" class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 tracking-wide text-[#E76F51]">សូមអរគុណ</h2>
+                    <p id="footer-msg" class="text-white/80 text-base sm:text-lg leading-relaxed font-light italic">"ពួកយើងមានកិត្តិយសណាស់ដែលលោកអ្នកបានជ្រើសរើស ចម្ការតាណូ។ រាល់ការជាវរបស់លោកអ្នក គឺជាកម្លាំងចិត្តដ៏ធំធេងសម្រាប់ពួកយើង។"</p>
                 </div>
                 <div class="rounded-[2.5rem] overflow-hidden border-4 border-white/10 shadow-2xl h-64 md:h-72 relative group">
                     <iframe width="100%" height="100%" frameborder="0" style="border:0" src="https://maps.google.com/maps?q=11.468869,104.928570&z=15&t=k&output=embed" allowfullscreen loading="lazy" class="group-hover:opacity-90 transition-all duration-700" title="Farm Location"></iframe>
@@ -610,11 +612,11 @@ body { font-family: 'Kantumruy Pro', sans-serif; }
                 </div>
             </div>
             <div class="flex flex-col justify-center space-y-8">
-                <h3 id="footer-contact" class="text-3xl font-bold mb-4 border-b border-white/20 pb-4 inline-block w-max">ទំនាក់ទំនងយើងខ្ញុំ</h3>
+                <h3 id="footer-contact" class="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4 border-b border-white/20 pb-4 inline-block w-max max-w-full">ទំនាក់ទំនងយើងខ្ញុំ</h3>
                 <a href="https://t.me/koyches" target="_blank" rel="noreferrer" class="group flex items-center justify-between bg-[#0088CC] hover:bg-[#0077B5] text-white p-5 rounded-2xl transition-all hover:scale-[1.02] shadow-xl">
                     <div class="flex items-center gap-5">
                         <div class="bg-white/20 p-3.5 rounded-full"><i data-lucide="send" class="w-7 h-7"></i></div>
-                        <div><p id="chat-telegram-label" class="text-xs text-blue-100 font-medium uppercase tracking-wider">Chat on Telegram</p><p class="text-2xl font-bold tracking-tight">@koyches</p></div>
+                        <div><p id="chat-telegram-label" class="text-xs text-blue-100 font-medium uppercase tracking-wider">Chat on Telegram</p><p class="text-xl sm:text-2xl font-bold tracking-tight">@koyches</p></div>
                     </div>
                     <i data-lucide="check-circle-2" class="w-7 h-7 opacity-0 group-hover:opacity-100 transition-opacity"></i>
                 </a>
@@ -924,11 +926,11 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         // Navbar uses dark: variants so it stays correct when the theme changes
         if (window.scrollY > 20) {
-            nav.classList.add('glass-nav', 'py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
-            nav.classList.remove('bg-transparent', 'py-6');
+            nav.classList.add('glass-nav', 'py-2', 'sm:py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
+            nav.classList.remove('bg-transparent', 'py-4', 'sm:py-6');
         } else {
-            nav.classList.remove('glass-nav', 'py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
-            nav.classList.add('bg-transparent', 'py-6');
+            nav.classList.remove('glass-nav', 'py-2', 'sm:py-3', 'shadow-sm', 'bg-[#FAF9F6]/90', 'dark:bg-[#1C2321]/90');
+            nav.classList.add('bg-transparent', 'py-4', 'sm:py-6');
         }
 
         // Vine Animation
@@ -970,6 +972,14 @@ window.addEventListener('DOMContentLoaded', async () => {
         obj.input.addEventListener('blur', () => {
             // small delay so clicking a suggestion still works
             setTimeout(() => toggleBottomDecor(searchQuery.length > 0), 150);
+        });
+        // Search / Enter key on phone keyboards: close suggestions and jump to the results
+        obj.input.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter') return;
+            e.preventDefault();
+            document.getElementById(obj.wrapper)?.classList.add('hidden');
+            obj.input.blur();
+            document.getElementById('products')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
@@ -1034,7 +1044,10 @@ function showSuggestions(query, wrapperId) {
 }
 
 function focusSearch() {
-    document.getElementById('mobile-search').focus();
+    const el = document.getElementById('mobile-search');
+    if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => el.focus({ preventScroll: true }), 300);
 }
 
 // Draggable chat
@@ -1227,11 +1240,11 @@ function setCategory(cat) {
     const btnFlower = document.getElementById('btn-flower');
 
     if (cat === 'plant') {
-        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white`;
-        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400`;
+        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 bg-white text-[#354F52] shadow-sm transform scale-100 dark:bg-[#52796F] dark:text-white`;
+        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#E76F51] dark:text-gray-400`;
     } else {
-        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 bg-white text-[#E76F51] shadow-sm transform scale-100 dark:bg-[#E76F51] dark:text-white`;
-        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-3 rounded-full text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#354F52] dark:text-gray-400`;
+        btnFlower.className = `flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 bg-white text-[#E76F51] shadow-sm transform scale-100 dark:bg-[#E76F51] dark:text-white`;
+        btnPlant.className = `flex-1 flex items-center justify-center gap-2 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-bold transition-all duration-500 text-gray-500 hover:text-[#354F52] dark:text-gray-400`;
     }
 
     renderProducts();
@@ -1271,17 +1284,17 @@ function renderProducts() {
     container.innerHTML = filtered.map((item, index) => {
         const displayName = escapeHtml(itemName(item));
         return `
-        <div onclick="openProductModal(${Number(item.id)})" class="group relative rounded-[2.5rem] overflow-hidden shadow-sm transition-all duration-700 cursor-pointer transform hover:-translate-y-3 hover-blur-bg border flex flex-col h-full animate-fadeInUp bg-white border-transparent hover:shadow-lg dark:bg-[#2D3A37] dark:border-[#3E4E4A] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" style="animation-delay: ${index * 150}ms">
+        <div onclick="openProductModal(${Number(item.id)})" class="group relative rounded-[1.5rem] sm:rounded-[2.5rem] overflow-hidden shadow-sm transition-all duration-700 cursor-pointer transform md:hover:-translate-y-3 hover-blur-bg border flex flex-col h-full animate-fadeInUp bg-white border-transparent hover:shadow-lg dark:bg-[#2D3A37] dark:border-[#3E4E4A] dark:shadow-[0_0_20px_rgba(255,255,255,0.05)]" style="animation-delay: ${index * 150}ms">
             <div class="relative aspect-[3/4] overflow-hidden">
                 <img src="${escapeHtml(item.image)}" alt="${displayName}" loading="lazy" class="bg-image w-full h-full object-cover transition-transform duration-[1.5s] ease-out scale-105 group-hover:scale-110">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 water-droplet pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-0 group-hover:translate-y-4">
                      <i data-lucide="droplets" class="text-blue-200 drop-shadow-xl opacity-90 w-14 h-14"></i>
                 </div>
-                <div class="absolute top-5 left-5 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full text-[#354F52] font-bold shadow-lg text-sm tracking-wide border border-white/50">${formatPrice(item.price)}</div>
+                <div class="absolute top-3 left-3 sm:top-5 sm:left-5 bg-white/90 backdrop-blur-md px-3 py-1 sm:px-4 sm:py-2 rounded-full text-[#354F52] font-bold shadow-lg text-xs sm:text-sm tracking-wide border border-white/50">${formatPrice(item.price)}</div>
             </div>
-            <div class="absolute bottom-0 left-0 right-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-700 ease-out bg-gradient-to-t from-black/80 via-black/40 to-transparent pt-24">
-                <h3 class="text-2xl font-bold text-white mb-2 drop-shadow-md leading-snug">${displayName}</h3>
+            <div class="absolute bottom-0 left-0 right-0 p-3 pt-12 sm:p-8 sm:pt-24 transform sm:translate-y-4 sm:group-hover:translate-y-0 transition-transform duration-700 ease-out bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                <h3 class="text-sm sm:text-2xl font-bold text-white mb-1 sm:mb-2 drop-shadow-md leading-snug">${displayName}</h3>
                 <div class="h-0 group-hover:h-auto overflow-hidden transition-all duration-700">
                     <p class="text-[#84A98C] text-sm mt-2 font-medium flex items-center gap-2 uppercase tracking-wider">${t.clickDetails} <i data-lucide="arrow-right" class="w-4 h-4"></i></p>
                 </div>
@@ -1321,7 +1334,7 @@ function openProductModal(id) {
 
     modalContent.innerHTML = `
         <!-- Image Side -->
-        <div class="w-full md:w-1/2 h-72 md:h-auto relative flex-shrink-0">
+        <div class="w-full md:w-1/2 h-52 sm:h-72 md:h-auto relative flex-shrink-0">
             <img src="${escapeHtml(selectedItem.image)}" alt="${displayName}" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:hidden"></div>
             <div class="absolute top-6 left-6 flex gap-3">
@@ -1330,19 +1343,19 @@ function openProductModal(id) {
             <button aria-label="Share" onclick="shareProduct()" class="absolute top-6 right-6 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full backdrop-blur-md transition-colors"><i data-lucide="share-2" class="w-6 h-6"></i></button>
         </div>
         <!-- Content Side -->
-        <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
+        <div class="w-full md:w-1/2 p-5 sm:p-8 md:p-12 flex flex-col overflow-y-auto">
             <div class="flex justify-between items-start mb-8">
                 <div>
                     <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold mb-3 tracking-wide uppercase ${selectedItem.category === 'plant' ? 'bg-[#52796F]/10 text-[#52796F] dark:bg-[#84A98C]/20 dark:text-[#84A98C]' : 'bg-[#E76F51]/10 text-[#E76F51] dark:bg-[#E76F51]/20 dark:text-[#E76F51]'}">
                         ${selectedItem.category === 'plant' ? t.plants : t.flowers}
                     </span>
-                    <h2 class="text-3xl md:text-4xl font-bold leading-tight text-[#2D4F1E] dark:text-[#84A98C]">${displayName}</h2>
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-[#2D4F1E] dark:text-[#84A98C]">${displayName}</h2>
                 </div>
                 <button aria-label="Close Product" onclick="closeModal('product-modal')" class="hidden md:block opacity-40 hover:opacity-100 transition-opacity"><i data-lucide="x" class="w-8 h-8"></i></button>
             </div>
 
             <div class="mb-8 flex-grow">
-                <p class="text-lg leading-relaxed opacity-80 font-light text-[#4A4E4D] dark:text-[#EAE8E2]">${displayDesc}</p>
+                <p class="text-base sm:text-lg leading-relaxed opacity-80 font-light text-[#4A4E4D] dark:text-[#EAE8E2]">${displayDesc}</p>
 
                 <!-- Quantity -->
                 <div class="mt-8">
@@ -1359,14 +1372,14 @@ function openProductModal(id) {
 
             <!-- Checkout Bar -->
             <div class="mt-auto pt-6 border-t sticky bottom-0 z-20 border-gray-100 bg-white dark:border-[#1A3C34] dark:bg-[#2D3A37]">
-                <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center justify-between mb-4 sm:mb-6">
                   <div class="flex flex-col">
                     <span class="opacity-60 text-sm font-medium uppercase tracking-wider text-[#4A4E4D] dark:text-[#EAE8E2]">${t.total}</span>
                     <span class="text-xs opacity-40 text-[#4A4E4D] dark:text-[#EAE8E2]">(${formatPrice(selectedItem.price)} x <span id="qty-calc">1</span>)</span>
                   </div>
-                  <span id="total-price" class="text-4xl md:text-5xl font-bold text-[#2D4F1E] dark:text-[#84A98C]">${formatPrice(selectedItem.price)}</span>
+                  <span id="total-price" class="text-3xl sm:text-4xl md:text-5xl font-bold text-[#2D4F1E] dark:text-[#84A98C]">${formatPrice(selectedItem.price)}</span>
                 </div>
-                <button onclick="addToCart()" class="w-full bg-[#52796F] hover:bg-[#354F52] dark:bg-[#84A98C] dark:hover:bg-[#52796F] text-white py-5 rounded-2xl font-bold text-xl shadow-xl shadow-green-900/20 transition-all active:scale-95 flex items-center justify-center gap-3">
+                <button onclick="addToCart()" class="w-full bg-[#52796F] hover:bg-[#354F52] dark:bg-[#84A98C] dark:hover:bg-[#52796F] text-white py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl shadow-xl shadow-green-900/20 transition-all active:scale-95 flex items-center justify-center gap-3">
                   <i data-lucide="shopping-cart" class="w-6 h-6"></i> ${t.addToCart}
                 </button>
             </div>
